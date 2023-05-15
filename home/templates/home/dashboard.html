@@ -1,0 +1,578 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Industrias Venado Predict - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %} " rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    {%  include 'partials/_sidebar.html' %}
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            {%  include 'partials/_topbar.html' %}
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">TENDENCIA DE MERCADO <img class="img-profile rounded-circle" src= "{% static "img/tendencia-icono.png" %}" width="60" height="58"  >
+                        <div> </div>
+
+                    </h1>
+
+                </div>
+                <div class="row">
+                    {% block content %}
+                    {% endblock %}
+
+
+                </div>
+                <!-- End of Main Content -->
+            <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Produccion (Mensual)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">C/ 40,000
+                                            <img class="img-profile rounded-circle"
+                                 src="{% static "img/ketchup.jpg" %}" height="120" width="108"></div>
+                                        </div>
+                                        <div class="col-auto">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Produccion (Anual)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">  C/ 215,000
+                                            <img class="img-profile rounded-circle"
+                                 src="{%static "img/polvohornear.jfif"%}" height="120" width="108"></div>
+                                        </div>
+                                        <div class="col-auto">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Disminucion de Produccion
+
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">9%</div>
+
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 19%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+
+                                                    </div>
+
+                                                </div>
+                                                       <img class="img-profile rounded-circle"
+                                                         src="{% static "img/avena.jfif"%}" height="120" width="108">
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Crecimiento de Produccion</div>
+                                                                       <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">36%</div>
+
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 46%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+
+                                                    </div>
+
+                                                </div>
+                                                       <img class="img-profile rounded-circle"
+                                                         src="{% static "img/ketchup.jpg"%}" height="120" width="108">
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">DASHBOARD & GRAFICOS - MARCA KRIS
+                        <div> </div>
+
+                    </h1>
+
+                </div>
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Crecimiento de Produccion - Salsas Ketchup</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChart"></canvas>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Impacto de Marca</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-primary"></i> Kris
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i>  Bristar
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-info"></i> Fleischmann
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Content Column -->
+                        <div class="col-xl-8 col-lg-7">
+
+                            <!-- Project Card Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Productos mas vendidos</h6>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="small font-weight-bold">SALSAS KETCHUP <span
+                                            class="float-right">36%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 56%"
+                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">SALSAS MAYONESA <span
+                                            class="float-right">28%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 48%"
+                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">AVENA INSTANTANEA<span
+                                            class="float-right">9%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar" role="progressbar" style="width: 9%"
+                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">GELATINA SIN SABOR <span
+                                            class="float-right">13%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 33%"
+                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">POLVO DE HORNEAR <span
+                                            class="float-right">14%</span></h4>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 34%"
+                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Color System -->
+                            <div class="row">
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-xl-4 col-lg-5">
+
+                            <!-- Illustrations -->
+                            <div class="card shadow mb-4" >
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Impacto en Mercado</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" >
+
+        <div style="float:left;margin-right:50px;">
+            <canvas id="canvas1"></canvas>
+            <div id="leyenda1" class="leyenda"></div>
+        </div>
+
+        <div style="float:left;">
+            <canvas id="canvas2"></canvas>
+            <div id="leyenda2" class="leyenda leyendaH"></div>
+        </div>
+
+        <script>
+            /**
+             * Clase para generar graficos de pastel
+             * Tiene que recibir:
+             *	el id del canvas
+             *	la anchura y altura del canvas
+             *	un array con los valores a mostrar del tipo:
+             *		var valores={
+             *			"Access":	{valor:10,color:"blue"},
+             *			"PHP":		{valor:23,color:"red"},
+             *			"Python":	{valor:18,color:"green"},
+             *			".NET":		{valor:12,color:"Orange"},
+             *			"C++":		{valor:30,color:"Cyan"}
+             *		}
+             */
+            var miPastel=function(canvasId,width,height,valores) {
+                this.canvas=document.getElementById(canvasId);;
+                this.canvas.width=width;
+                this.canvas.height=height;
+                this.radio=Math.min(this.canvas.width/2,this.canvas.height/2)
+                this.context=this.canvas.getContext("2d");
+                this.valores=valores;
+                this.tamanoDonut=0;
+
+                /**
+                 * Dibuja un gráfico de pastel
+                 */
+                this.dibujar=function() {
+                    this.total=this.getTotal();
+                    var valor=0;
+                    var inicioAngulo=0;
+                    var angulo=0;
+
+                    // creamos los quesos del pastel
+                    for(var i in this.valores)
+                    {
+                        valor=valores[i]["valor"];
+                        color=valores[i]["color"];
+                        angulo=2*Math.PI*valor/this.total;
+
+                        this.context.fillStyle=color;
+                        this.context.beginPath();
+                        this.context.moveTo(this.canvas.width/2, this.canvas.height/2);
+                        this.context.arc(this.canvas.width/2, this.canvas.height/2, this.radio, inicioAngulo, (inicioAngulo+angulo));
+                        this.context.closePath();
+                        this.context.fill();
+                        inicioAngulo+=angulo;
+                    }
+                }
+
+                /**
+                 * Dibuja un gráfico de pastel con una redonda en medio en modo de donut
+                 * Tiene que recibir:
+                 *	el tamaño de la redonda central (0 no hay redonda - 1 es todo)
+                 *	el color de la redonda
+                 */
+                this.dibujarDonut=function(tamano,color) {
+                    this.tamanoDonut=tamano;
+                    this.dibujar();
+
+                    // creamos un circulo del color recibido en medio
+                    this.context.fillStyle=color;
+                    this.context.beginPath();
+                    this.context.moveTo(this.canvas.width/2, this.canvas.height/2);
+                    this.context.arc(this.canvas.width/2, this.canvas.height/2, this.radio*tamano, 0, 2*Math.PI);
+                    this.context.closePath();
+                    this.context.fill();
+                }
+
+                /**
+                 * Pone el tanto por ciento de cada uno de los valores
+                 * Tiene que recibir:
+                 *	el color del texto
+                 */
+                this.ponerPorCiento=function(color){
+                    var valor=0;
+                    var etiquetaX=0;
+                    var etiquetaY=0;
+                    var inicioAngulo=0;
+                    var angulo=0;
+                    var texto="";
+                    var incrementar=0;
+
+                    // si hemos dibujado un donut, tenemos que incrementar el valor del radio
+                    // para que quede centrado
+                    if(this.tamanoDonut)
+                        incrementar=(this.radio*this.tamanoDonut)/2;
+
+                    this.context.font="bold 12pt Calibri";
+                    this.context.fillStyle=color;
+                    for(var i in this.valores)
+                    {
+                        valor=valores[i]["valor"];
+                        angulo=2*Math.PI*valor/this.total;
+
+                        // calculamos la posición del texto
+                        etiquetaX=this.canvas.width/2+(incrementar+this.radio/2)*Math.cos(inicioAngulo+angulo/2);
+                        etiquetaY=this.canvas.height/2+(incrementar+this.radio/2)*Math.sin(inicioAngulo+angulo/2);
+
+                        texto=Math.round(100*valor/this.total);
+
+                        // movemos la posición unos pixels si estamos en la parte izquierda
+                        // del pastel para que quede mas centrado
+                        if(etiquetaX<this.canvas.width/2)
+                            etiquetaX-=10;
+
+                        // ponemos los valores
+                        this.context.beginPath();
+                        this.context.fillText(texto+"%", etiquetaX, etiquetaY);
+                        this.context.stroke();
+
+                        inicioAngulo+=angulo;
+                    }
+                }
+
+                /**
+                 * Function que devuelve la suma del total de los valores recibidos en el array
+                 */
+                this.getTotal=function() {
+                    var total=0;
+                    for(var i in this.valores)
+                    {
+                        total+=valores[i]["valor"];
+                    }
+                    return total;
+                }
+
+                /**
+                 * Función que devuelve una lista (<ul><li>) con la leyenda
+                 * Tiene que recibir el id donde poner la leyenda
+                 */
+                this.ponerLeyenda=function(leyendaId) {
+                    var codigoHTML="<ul class='leyenda'>";
+
+                    for(var i in this.valores)
+                    {
+                        codigoHTML+="<li><span style='background-color:"+valores[i]["color"]+"'></span>"+i+"</li>";
+                    }
+                    codigoHTML+="</ul>";
+                    document.getElementById(leyendaId).innerHTML=codigoHTML;
+                }
+            }
+
+            // definimos los valores de nuestra gráfica
+            var valores={
+                "SALSAS KETCHUP":{valor:1044,color:"blue"},
+                "AVENA INSTANTANEA":{valor:4000,color:"red"},
+                "GELATINA SIN SABOR":{valor:1590,color:"green"},
+                "PURE DE PAPAS":{valor:3200,color:"Orange"},
+                "SALSAS MAYONESA":{valor:1430,color:"Cyan"}
+            }
+
+
+            // generamos el primer pastel
+            var pastel=new miPastel("canvas1",280,280,valores);
+            pastel.dibujar();
+            pastel.ponerPorCiento("white");
+
+
+
+
+
+        </script></div>
+                                </div>
+                            </div>
+
+                            <!-- Approach -->
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Industrias Venado 2022 </span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+                <!-- Footer -->
+
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">¿Esta seguro de cerrar sesion?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Tendremos que verificar tu identidad la proxima vez que inicies sesion en el sistema.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="{% url 'home' %}">Cerrar sesion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript-->
+        <script src=" {% static 'vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+        <!-- Page level plugins -->
+        <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+        <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+
+
+
+</html>
+

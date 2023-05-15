@@ -1,4 +1,6 @@
 {% load static %}
+{% load plotly_dash %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,13 +15,17 @@
     <title>Industrias Venado Predict - Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    <link href="^{% static 'vendor/fontawesome-free/css/all.min.css' %} " rel="stylesheet" type="text/css">
+    <link href="{% static 'vendor/fontawesome-free/css/style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %} " rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+     <link rel="stylesheet" href="{% static 'vendor/fontawesome-free/css/style.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
@@ -43,14 +49,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
                  <div class="row">
                      {% block content %}
                      {% endblock %}
@@ -58,9 +57,8 @@
 
             </div>
             <!-- End of Main Content -->
-
+            <script src="{% static 'popup.js' %}"></script>
             <!-- Footer -->
-    {%  include 'partials/_footer.html' %}
             <!-- End of Footer -->
 
         </div>
@@ -70,9 +68,6 @@
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -80,37 +75,311 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">¿Esta seguro de cerrar sesion?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Tendremos que verificar tu identidad la proxima vez que inicies sesion en el sistema.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="{% url 'home' %}">Cerrar sesion</a>
                 </div>
             </div>
         </div>
     </div>
-<div>
-    <!-- Bootstrap core JavaScript-->
-    <script src=" {% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Modal ketchup -->
 
-    <!-- Core plugin JavaScript-->
-    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content modal-xl">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="row">
+                <div class="col-lg-4 d-none d-lg-block " > <br><br><img src="{% static 'img/ketchup.jpg'%}" height="400" width="428"></div>
+                    <div class="col-lg-8" > <div class="{% plotly_class name='SimpleExample' %} card">
+                            {% plotly_app name='SimpleExample' ratio=0.66 %}
+                    </div> </div>
 
-    <!-- Custom scripts for all pages-->
-    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Modal avena -->
 
-    <!-- Page level plugins -->
-    <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+    <div class="modal fade" id="productModalavena" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content modal-xl">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="row">
+                <div class="col-lg-4 d-none d-lg-block " > <br><br><img src="{% static 'img/avena.jfif'%}" height="400" width="428"></div>
+                    <div class="col-lg-8" > <div class="{% plotly_class name='SimpleExample2' %} card">
+                            {% plotly_app name='SimpleExample2' ratio=0.66 %}
+                    </div> </div>
 
-    <!-- Page level custom scripts -->
-    <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
-    <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Modal azucaradoras -->
 
+    <div class="modal fade" id="productModalazucaraditas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content modal-xl">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="row">
+                <div class="col-lg-4 d-none d-lg-block " > <br><br><img src="{% static 'img/azucaraditas.jpg'%}" height="400" width="428"></div>
+                    <div class="col-lg-8" > <div class="{% plotly_class name='SimpleExample7' %} card">
+                            {% plotly_app name='SimpleExample7' ratio=0.66 %}
+                    </div> </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Modal gelatina -->
+
+    <div class="modal fade" id="productModalgelatina" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content modal-xl">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="row">
+                <div class="col-lg-4 d-none d-lg-block " > <br><br><img src="{% static 'img/gelatinasinsabor.jpg'%}" height="400" width="428"></div>
+                    <div class="col-lg-8" > <div class="{% plotly_class name='SimpleExample3' %} card">
+                            {% plotly_app name='SimpleExample3' ratio=0.66 %}
+                    </div> </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Modal durazno en lata -->
+
+    <div class="modal fade" id="productModaldurazno" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content modal-xl">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="row">
+                <div class="col-lg-4 d-none d-lg-block " > <br><br><img src="{% static 'img/duraznos.png'%}" height="400" width="428"></div>
+                    <div class="col-lg-8" > <div class="{% plotly_class name='SimpleExample4' %} card">
+                            {% plotly_app name='SimpleExample4' ratio=0.66 %}
+                    </div> </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Modal mayonesa -->
+
+    <div class="modal fade" id="productModalmayonesa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content modal-xl">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="row">
+                <div class="col-lg-4 d-none d-lg-block " > <br><br><img src="{% static 'img/mayonesa.jpg'%}" height="400" width="428"></div>
+                    <div class="col-lg-8" > <div class="{% plotly_class name='SimpleExample5' %} card">
+                            {% plotly_app name='SimpleExample5' ratio=0.66 %}
+                    </div> </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Modal levadura -->
+
+    <div class="modal fade" id="productModallevadura" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content modal-xl">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="row">
+                <div class="col-lg-4 d-none d-lg-block " > <br><br><img src="{% static 'img/polvohornear.jfif'%}" height="400" width="428"></div>
+                    <div class="col-lg-8" > <div class="{% plotly_class name='SimpleExample6' %} card">
+                            {% plotly_app name='SimpleExample6' ratio=0.66 %}
+                    </div> </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="modal fade" id="prediccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content modal-xl">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">GENERAR PREDICCION DE PRODUCCION</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="row" style="height: 310px">
+                    <div class="col-lg-4 d-none d-lg-block " > <img id="img" style="position: absolute;left: 10%" src="{% static 'img/logotipo principal kris.png'%}" height="310" width="330"></div>
+                    <div class="col-lg-8 d-none d-lg-block" style=" align-content: flex-end;width: 300% ; height: 100%">
+                        <br><br><div >  <select id="selectproducto" name="select" >
+  <option value="select" disabled selected>Seleccione un producto...</option>
+  <option value="SALSAS KETCHUP">SALSAS KETCHUP</option>
+  <option value="AVENA INSTANTANEA">AVENA INSTANTANEA</option>
+  <option value="CEREALES AZUCARADITAS">CEREALES AZUCARADITAS</option>
+  <option value="GELATINA SIN SABOR">GELATINA SIN SABOR</option>
+   <option value="DURAZNOS ENLATADOS">DURAZNOS ENLATADOS</option>
+  <option value="SALSAS MAYONESA">SALSAS MAYONESA</option>
+  <option value="POLVO DE HORNEAR">POLVO DE HORNEAR</option>
+
+</select>
+                        <label for="">Selecciona mes de produccion</label>
+  <input class="col-lg-4" type="month" >
+                        <br><br>
+                        <div class="row-cols-lg-4">
+  <div  class="button" style="  position: absolute;left:  20%; align-content: center; height: 55px;max-width: 300px;width: 50%;background: darkred;border-radius: 6px;cursor: pointer;box-shadow: 0 5px 10px rgba(239,236,236,0.2);overflow: hidden;">
+    <div class="text-icon" style="height: 100% ;  width: 100%;display: flex;align-items: center;justify-content: center;">
+      <i class="bx bx-cloud-upload" style=" "></i>
+      <span class="text" style="color: white">Generar prediccion </span>
+    </div>
+  </div>
+                            <br><br><br><br>
+        <div>
+              <label class="text-xs font-weight-bold text-info text-uppercase mb-1" id="cant" style="color: #1b1b1b ;font-size: 15px; position: absolute;left: 7% " > </label>
+        </div>
+  <script>
+    const button = document.querySelector(".button"),
+    text = document.querySelector(".text");
+
+
+
+    button.addEventListener("click", ()=>{
+      button.classList.add("progress");
+      text.innerText = "PREDICIENDO CANT/PRODUCCION";
+
+      setTimeout(()=>{
+       button.classList.remove("progress"); //remove progress after 6s
+       text.innerText = "Prediccion finalizada";
+               var cant1 =0
+        const selectElement = document.querySelector('#selectproducto');
+        const seleccionado = selectElement.options[selectElement.selectedIndex].value;
+
+       if (seleccionado === 'SALSAS KETCHUP') {
+          cant1 = 10958
+           document.getElementById("img").src="{% static 'img/ketchup.jpg' %}"
+           document.querySelector("#cant").innerText = " La cantidad preevista para "+seleccionado +" es de : "+cant1+"cant/produccion";
+       }
+       else if (seleccionado === 'AVENA INSTANTANEA') {
+           cant1 =25874
+           document.getElementById("img").src="{% static 'img/avena.jfif' %}"
+           document.querySelector("#cant").innerText = " La cantidad preevista para "+seleccionado +" es de : "+cant1+"cant/produccion";
+       }else if (seleccionado === 'select') {
+           document.querySelector("#cant").innerText =" Porfavor Selecciona un producto y mes de prediccion ";
+       } else if (seleccionado === 'CEREALES AZUCARADITAS') {
+           cant1 =25874
+           document.getElementById("img").src="{% static 'img/cereal.jpg' %}"
+           document.querySelector("#cant").innerText = " La cantidad preevista para "+seleccionado +" es de : "+cant1+"cant/produccion";
+       } else if (seleccionado === 'GELATINA SIN SABOR') {
+           cant1 =25874
+           document.getElementById("img").src="{% static 'img/gelatinasinsabor.jpg' %}"
+           document.querySelector("#cant").innerText = " La cantidad preevista para "+seleccionado +" es de : "+cant1+"cant/produccion";
+       } else if (seleccionado === 'DURAZNOS ENLATADOS') {
+           cant1 =25874
+           document.getElementById("img").src="{% static 'img/duraznos.png' %}"
+           document.querySelector("#cant").innerText = " La cantidad preevista para "+seleccionado +" es de : "+cant1+"cant/produccion";
+       } else if (seleccionado === 'SALSAS MAYONESA') {
+           cant1 =25874
+           document.getElementById("img").src="{% static 'img/mayonesa.jpg' %}"
+           document.querySelector("#cant").innerText = " La cantidad preevista para "+seleccionado +" es de : "+cant1+"cant/produccion";
+       } else if (seleccionado === 'POLVO DE HORNEAR') {
+           cant1 =25874
+           document.getElementById("img").src="{% static 'img/polvohornear.jfif' %}"
+           document.querySelector("#cant").innerText = " La cantidad preevista para "+seleccionado +" es de : "+cant1+"cant/produccion";
+       }
+      },6000); //1000ms = 1s (6000 = 6s)
+
+    });
+  </script>
+
+	</div>
+       </div></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-dismiss="modal" style="background: darkred">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+            <!-- Bootstrap core JavaScript-->
+            <script src=" {% static 'vendor/jquery/jquery.min.js' %}"></script>
+            <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+            <!-- Core plugin JavaScript-->
+            <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+            <!-- Custom scripts for all pages-->
+            <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+            <!-- Page level plugins -->
+            <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+
+            <!-- Page level custom scripts -->
+            <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+            <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
 </body>
-
 </html>
