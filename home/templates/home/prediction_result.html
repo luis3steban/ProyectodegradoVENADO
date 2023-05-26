@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado de Predicción</title>
+</head>
+<body>
+    <h1>Resultado de Predicción</h1>
+
+    <h2>Fecha de inicio: {{ fecha_inicio }}</h2>
+    <h2>Fecha de fin: {{ fecha_fin }}</h2>
+
+    <h3>Predicciones:</h3>
+    <ul>
+        {% for prediction in predictions %}
+            <li>{{ prediction }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

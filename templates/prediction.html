@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados de Predicción</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+
+        p {
+            color: #777;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        img {
+            max-width: 100%;
+            margin-top: 20px;
+        }
+
+        .download-button {
+            display: block;
+            width: 150px;
+            padding: 10px;
+            margin: 30px auto;
+            text-align: center;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .download-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+    <h1>Resultados de Predicción</h1>
+
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% else %}
+        <h2>Resumen del mejor modelo</h2>
+        <pre>{{ summary }}</pre>
+
+        <h2>Predicciones</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Predicción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fecha, prediccion in predicciones %}
+                    <tr>
+                        <td>{{ fecha }}</td>
+                        <td>{{ prediccion }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Error de Predicción</h2>
+        <p>Error RMSE: {{ error }}</p>
+
+        <h2>Producción Adecuada</h2>
+        <p>Producción adecuada para el período seleccionado: {{ produccion_adecuada }}</p>
+
+        <h2>Nombre del Producto</h2>
+        <p>{{ nombre_producto }}</p>
+
+        <h2>Gráfico de Predicciones</h2>
+        {% if grafica_encoded %}
+            <img src="data:image/png;base64,{{ grafica_encoded }}" alt="Gráfica de predicciones">
+        {% endif %}
+    {% endif %}
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="descargar_pdf">Descargar Reporte PDF</button>
+    </form>
+</body>
+</html>

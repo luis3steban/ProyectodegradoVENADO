@@ -1,20 +1,92 @@
-{%  extends 'base.html' %}
+{% extends 'base.html' %}
+{% load plotly_dash %}
 {% load static %}
+
 {% block content %}
+<style>
+    .image-popup {
+        margin-right: 10px;
+    }
 
-    <div class="container">
-<div>
-    <body class="bg-gradient-danger">
-    <h2 class="text-gray-900"> <center> NUESTRAS MARCAS </center></h2>
-    </body>
-</div>
+    .image-popup:hover .image-description {
+        display: block;
+    }
+
+    .image-description {
+        display: none;
+        margin-top: 10px;
+        text-align: center;
+    }
+    .custom-button {
+        text-decoration: none !important;
+        outline: none !important;
+        color: inherit !important;
+        background-color: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+    .image-popup a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .custom-image {
+        border: none !important;
+        outline: none !important;
+    }
+</style>
+
+<div class="container">
+    <div class="text-center">
+        <h2 class="text-gray-900" style="font-weight: 900; margin: 0; padding: 0; border: 0; outline: 0; font-size: 40px; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; vertical-align: baseline; background: transparent; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #375fa7!important;">
+            LÍNEA DE PRODUCTOS - SALSAS KRIS
+        </h2>
+    </div>
     <br>
-        <br>
+    <br>
+    <div class="d-flex justify-content-center">
+        <div class="p-2 image-popup">
+            <div class="image-popup">
+                    <button class="btn btn-link open-modal custom-button" data-toggle="modal" data-target="#productModalmostaza">
+                <img src="{% static 'img/krismostaza400g.png' %}" height="420" width="200" alt="Salsa kris mostaza 410gr" class="custom-image">
+                <div class="image-description">SALSA KRIS MOSTAZA 400gr </div>
+                    </button>
+            </div>
+        </div>
+            <div class="p-2 image-popup">
+                <div class="image-popup">
+                    <button class="btn btn-link open-modal custom-button" data-toggle="modal" data-target="#productModal">
+                        <img src="{% static 'img/krisketchupsalsa410g.png' %}" height="420" width="220" alt="Salsa kris ketchup 410gr" class="custom-image">
+                        <div class="image-description">SALSA KRIS KETCHUP 410gr</div>
+                    </button>
+                </div>
+            </div>
+        <div class="p-2 image-popup">
+            <div class="image-popup">
+            <button class="btn btn-link open-modal custom-button" data-toggle="modal" data-target="#productModalmayonesa">
+                <img src="{% static 'img/krismayonesalsa410g.png' %}" height="420" width="210" alt="Salsa kris mayonesa 380gr" class="custom-image">
+                <div class="image-description">SALSA KRIS MAYONESA 380gr</div>
+            </button>
+            </div>
+        </div>
+    </div>
+    <!-- Contenido de la ventana emergente -->
+</div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('.image-popup');
 
-        <img  src="{% static 'img/Bristar logo.png'%}" height="320" width="328" >
-        <a  class="img-profile rounded-circle" href="{% url 'prediccion' %}"> <img src="{% static 'img/logotipo principal kris.png'%}" height="400" width="428" > </a>
-            <img src="{% static 'img/fleshman.png'%}" height="200" width="280" ></div>
-                                                <! -- contenido de la ventana emergente-->
+        images.forEach(function(image) {
+            image.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+            });
+
+            image.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 {% endblock %}

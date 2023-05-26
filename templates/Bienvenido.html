@@ -1,0 +1,45 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% load plotly_dash %}
+                    <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">PRODUCTOS MARCA KRIS</h1>
+                            <a href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm " class="fas fa-download fa-sm text-white-50" style = background:darkred
+                               data-toggle="modal"  data-target="#prediccion">Generar Prediccion</a>
+                         </div>
+                            <a class="" href="#" data-toggle="modal" data-target="#productModal">
+                                    <img class="img-profile rounded-circle"
+                                       src="{% static 'img/ketchup.jpg'%}" height="160" width="148" ></a>
+                            <a class="" href="#" data-toggle="modal" data-target="#productModalavena">
+                            <img class="img-profile rounded-circle"
+                                 src="{% static 'img/avena.jfif'%} " height="160" width="148"></a>
+                            <a class="" href="#" data-toggle="modal" data-target="#productModalazucaraditas">
+                            <img class="img-profile rounded-circle"
+                                 src="{% static 'img/azucaraditas.jpg'%}" height="160" width="148"></a>
+                            <a class="" href="#" data-toggle="modal" data-target="#productModalgelatina">
+                            <img class="img-profile rounded-circle"
+                                 src="{% static 'img/gelatinasinsabor.jpg'%} " height="160" width="148"></a>
+                            <a class="" href="#" data-toggle="modal" data-target="#productModaldurazno          ">
+                            <img class="img-profile rounded-circle"
+                                 src="{% static 'img/nectar.png'%}" height="160" width="148"></a>
+                            <a class="" href="#" data-toggle="modal" data-target="#productModalmayonesa">
+                                <img class="img-profile rounded-circle"
+                                     src="{% static 'img/mayonesa.jpg'%}" height="160" width="148"></a>
+                            <a class="" href="#" data-toggle="modal" data-target="#productModallevadura">
+                                <img class="img-profile rounded-circle"
+                                     src="{% static 'img/polvohornear.jfif'%}" height="160" width="148"></a>
+
+
+                        </h1>
+
+                    </div>
+    <div align="center"><img src="{% static 'img/logotipo principal.png'%}"> <img src="{% static 'img/logotipo principal kris.png'%}"></div>
+                                                <! -- contenido de la ventana emergente-->
+    <div class="modal-content" ></div>>
+<br>
+    {{ plot1 | safe }}
+
+{% endblock %}

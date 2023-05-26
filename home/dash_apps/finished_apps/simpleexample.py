@@ -8,142 +8,84 @@ import plotly.express as px
 from django_plotly_dash import DjangoDash
 
 #cargando el dataset
-produccionvenaddo = pd.read_csv('produccion-venado-2020.csv')
-#creamos dashapp
+produccionketchupvenado = pd.read_csv('produccionketchupmensual.csv')
+produccionmayonesavenado = pd.read_csv('produccionmayonesamensual.csv')
+produccionmostazavenado = pd.read_csv('produccionmayonesamensual.csv')
+# Grafica comp - graph Salsa kris ketchup
 app = DjangoDash('SimpleExample')
 app2 = DjangoDash('SimpleExample2')
-app3 = DjangoDash('SimpleExample3')
-app4 = DjangoDash('SimpleExample4')
-app5 = DjangoDash('SimpleExample5')
-app6 = DjangoDash('SimpleExample6')
-app7 = DjangoDash('SimpleExample7')
-
 
 app.layout = html.Div(children=[
-    dcc.Dropdown(id='geo-dropdown',
-                 options=[{'label': i,'value': i}
-                          for i in produccionvenaddo ['producto'].unique()],
-                value='SALSAS KETCHUP'),
-   dcc.Graph(id='price-graph')
-   ])
+    dcc.Dropdown(
+        id='product-dropdown',
+        options=[{'label': i, 'value': i} for i in produccionketchupvenado['nombre producto'].unique()],
+        value=' KRIS KETCHUP'
+    ),
+    dcc.Graph(id='comparison-graph')
+])
 
 @app.callback(
-               Output(component_id='price-graph', component_property= 'figure'),
-              [Input(component_id='geo-dropdown', component_property='value')])
-def update_graph(selected_geography):
-    filterd_avocado = produccionvenaddo[produccionvenaddo['producto']== selected_geography]
-    line_fig=px.line(filterd_avocado,
-                     x='Fecha produccion',y='cantidad produccion - miles',
-                     color='Tipo',
-                     title=f'Grafica produccion - {selected_geography}')
-    return line_fig
+    Output(component_id='comparison-graph', component_property='figure'),
+    [Input(component_id='product-dropdown', component_property='value')]
+)
+def update_graph(selected_product):
+    filtered_data = produccionketchupvenado[produccionketchupvenado['nombre producto'] == selected_product]
 
+    fig = px.line(filtered_data, x='Fecha mensual produccion', y=['cantidad producida', 'cantidad distribuida'],
+                  title=f'Comparación de Cantidad Producida y Distribuida - {selected_product}')
+    fig.update_layout(
+        xaxis_title='Fecha',
+        yaxis_title='Cantidad unidad producto'
+    )
+
+    return fig
+
+# Grafica comp - graph Salsa kris mayonesa
 app2.layout = html.Div(children=[
-    dcc.Dropdown(id='geo-dropdown',
-                 options=[{'label': i,'value': i}
-                          for i in produccionvenaddo ['producto'].unique()],
-                value='AVENA INSTANTANEA'),
-   dcc.Graph(id='price-graph')
-   ])
+    dcc.Dropdown(
+        id='product-dropdown',
+        options=[{'label': i, 'value': i} for i in produccionmayonesavenado['nombre producto'].unique()],
+        value='KRIS MAYONESA'
+    ),
+    dcc.Graph(id='comparison-graph')
+])
 
 @app2.callback(
-               Output(component_id='price-graph', component_property= 'figure'),
-              [Input(component_id='geo-dropdown', component_property='value')])
-def update_graph(selected_geography):
-    filterd_avocado = produccionvenaddo[produccionvenaddo['producto']== selected_geography]
-    line_fig=px.line(filterd_avocado,
-                     x='Fecha produccion',y='cantidad produccion - miles',
-                     color='Tipo',
-                     title=f'Grafica produccion - {selected_geography}')
-    return line_fig
-app3.layout = html.Div(children=[
-    dcc.Dropdown(id='geo-dropdown',
-                 options=[{'label': i,'value': i}
-                          for i in produccionvenaddo ['producto'].unique()],
-                value='GELATINA SIN SABOR'),
-   dcc.Graph(id='price-graph')
-   ])
+    Output(component_id='comparison-graph', component_property='figure'),
+    [Input(component_id='product-dropdown', component_property='value')]
+)
+def update_graph(selected_product):
+    filtered_data = produccionmayonesavenado[produccionmayonesavenado['nombre producto'] == selected_product]
 
-@app3.callback(
-               Output(component_id='price-graph', component_property= 'figure'),
-              [Input(component_id='geo-dropdown', component_property='value')])
-def update_graph(selected_geography):
-    filterd_avocado = produccionvenaddo[produccionvenaddo['producto']== selected_geography]
-    line_fig=px.line(filterd_avocado,
-                     x='Fecha produccion',y='cantidad produccion - miles',
-                     color='Tipo',
-                     title=f'Grafica produccion - {selected_geography}')
-    return line_fig
-app4.layout = html.Div(children=[
-    dcc.Dropdown(id='geo-dropdown',
-                 options=[{'label': i,'value': i}
-                          for i in produccionvenaddo ['producto'].unique()],
-                value='DURAZNOS ENLATADOS'),
-   dcc.Graph(id='price-graph')
-   ])
+    fig = px.line(filtered_data, x='Fecha produccion mensual', y=['cantidad producida', 'cantidad distribuida'],
+                  title=f'Comparación de Cantidad Producida y Distribuida - {selected_product}')
+    fig.update_layout(
+        xaxis_title='Fecha',
+        yaxis_title='Cantidad unidad producto'
+    )
+    return fig
 
-@app4.callback(
-               Output(component_id='price-graph', component_property= 'figure'),
-              [Input(component_id='geo-dropdown', component_property='value')])
-def update_graph(selected_geography):
-    filterd_avocado = produccionvenaddo[produccionvenaddo['producto']== selected_geography]
-    line_fig=px.line(filterd_avocado,
-                     x='Fecha produccion',y='cantidad produccion - miles',
-                     color='Tipo',
-                     title=f'Grafica produccion - {selected_geography}')
-    return line_fig
-app5.layout = html.Div(children=[
-    dcc.Dropdown(id='geo-dropdown',
-                 options=[{'label': i,'value': i}
-                          for i in produccionvenaddo ['producto'].unique()],
-                value='SALSAS MAYONESA'),
-   dcc.Graph(id='price-graph')
-   ])
+# Grafica comp - graph Salsa kris mostaza
+app2.layout = html.Div(children=[
+    dcc.Dropdown(
+        id='product-dropdown',
+        options=[{'label': i, 'value': i} for i in produccionmayonesavenado['nombre producto'].unique()],
+        value='KRIS MAYONESA'
+    ),
+    dcc.Graph(id='comparison-graph')
+])
 
-@app5.callback(
-               Output(component_id='price-graph', component_property= 'figure'),
-              [Input(component_id='geo-dropdown', component_property='value')])
-def update_graph(selected_geography):
-    filterd_avocado = produccionvenaddo[produccionvenaddo['producto']== selected_geography]
-    line_fig=px.line(filterd_avocado,
-                     x='Fecha produccion',y='cantidad produccion - miles',
-                     color='Tipo',
-                     title=f'Grafica produccion - {selected_geography}')
-    return line_fig
-app6.layout = html.Div(children=[
-    dcc.Dropdown(id='geo-dropdown',
-                 options=[{'label': i,'value': i}
-                          for i in produccionvenaddo ['producto'].unique()],
-                value='POLVO DE HORNEAR'),
-   dcc.Graph(id='price-graph')
-   ])
+@app2.callback(
+    Output(component_id='comparison-graph', component_property='figure'),
+    [Input(component_id='product-dropdown', component_property='value')]
+)
+def update_graph(selected_product):
+    filtered_data = produccionmayonesavenado[produccionmayonesavenado['nombre producto'] == selected_product]
 
-@app6.callback(
-               Output(component_id='price-graph', component_property= 'figure'),
-              [Input(component_id='geo-dropdown', component_property='value')])
-def update_graph(selected_geography):
-    filterd_avocado = produccionvenaddo[produccionvenaddo['producto']== selected_geography]
-    line_fig=px.line(filterd_avocado,
-                     x='Fecha produccion',y='cantidad produccion - miles',
-                     color='Tipo',
-                     title=f'Grafica produccion - {selected_geography}')
-    return line_fig
-app7.layout = html.Div(children=[
-    dcc.Dropdown(id='geo-dropdown',
-                 options=[{'label': i,'value': i}
-                          for i in produccionvenaddo ['producto'].unique()],
-                value='CEREAL AZUCARADITAS'),
-   dcc.Graph(id='price-graph')
-   ])
-
-@app7.callback(
-               Output(component_id='price-graph', component_property= 'figure'),
-              [Input(component_id='geo-dropdown', component_property='value')])
-def update_graph(selected_geography):
-    filterd_avocado = produccionvenaddo[produccionvenaddo['producto']== selected_geography]
-    line_fig=px.line(filterd_avocado,
-                     x='Fecha produccion',y='cantidad produccion - miles',
-                     color='Tipo',
-                     title=f'Grafica produccion - {selected_geography}')
-    return line_fig
-
+    fig = px.line(filtered_data, x='Fecha produccion mensual', y=['cantidad producida', 'cantidad distribuida'],
+                  title=f'Comparación de Cantidad Producida y Distribuida - {selected_product}')
+    fig.update_layout(
+        xaxis_title='Fecha',
+        yaxis_title='Cantidad unidad producto'
+    )
+    return fig

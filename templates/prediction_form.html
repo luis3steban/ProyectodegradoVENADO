@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predicción de Producción de Ketchup</title>
+</head>
+<body>
+    <h1>Predicción de Producción de Ketchup</h1>
+
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+    <form method="POST" action="{% url 'prediction' %}">
+        {% csrf_token %}
+        <label for="month_input">Mes:</label>
+        <select name="month_input" id="month_input">
+            <option value="01">Enero</option>
+            <option value="02">Febrero</option>
+            <option value="03">Marzo</option>
+            <option value="04">Abril</option>
+            <option value="05">Mayo</option>
+            <option value="06">Junio</option>
+            <option value="07">Julio</option>
+            <option value="08">Agosto</option>
+            <option value="09">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+        </select>
+
+        <label for="year">Año:</label>
+        <input type="number" name="year" id="year" min="1900" max="2100" required>
+
+        <button type="submit">Realizar Predicción</button>
+    </form>
+</body>
+</html>

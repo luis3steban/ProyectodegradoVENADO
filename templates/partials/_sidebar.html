@@ -24,7 +24,7 @@
             <!-- Heading -->
 
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'dashboard' %}" style=background-color:darkred>
+                <a class="nav-link" href="{% url 'form' %}" style=background-color:darkred>
 
                     <span> Inicio</span></a>
             </li>
@@ -33,13 +33,12 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo" >
 
-                    <span>Prediccion</span>
+                    <span>Pronóstico de produccion </span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded" >
-                        <h6 class="collapse-header">Menu Prediccion:</h6>
-                        <a class="collapse-item" href="{% url 'marcas' %}" >Marcas & Productos</a>
-
+                        <h6 class="collapse-header">LINEA DE PRODUCTOS :</h6>
+                        <a class="collapse-item" href="{% url 'marcas' %}" >Salsas KRIS</a>
                     </div>
                 </div>
             </li>
@@ -48,44 +47,33 @@
             <li class="nav-item">
                 <a class="nav-link" href="charts.html" style=background-color:darkred>
 
-                    <span> Gestion Productos</span></a>
+                    <span> Gestion Produccion </span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider" style=background-color:white>
             <!-- Heading -->
-            <!-- Nav Item - Dashboard -->
-
-
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages" style=background-color:darkred>
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Administrar cuenta</span>
+                    <span>Panel de control </span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="register.html">Gestion Usuario</a>
-                        <a class="collapse-item" href="forgot-password.html">Mi perfil</a>
+                        <a class="collapse-item" href="register.html">Modulo usuarios</a>
+                        <a class="collapse-item" href="register.html">Reporte produccion</a>
+                        <a class="collapse-item" href="forgot-password.html">Reporte distribucion</a>
+                        <a class="collapse-item" href="forgot-password.html">Historial prediccion</a>
                         <div class="collapse-divider"></div>
                     </div>
                 </div>
             </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html" style=background-color:darkred>
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Historial prediccion </span></a>
-            </li>
-
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#logoutModal" style=background-color:darkred>
                     <i class="fas fa-fw fa-table"></i>
                     <span>Cerra sesion</span></a>
             </li>
-
-
         </ul>

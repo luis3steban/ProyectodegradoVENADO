@@ -89,181 +89,205 @@
         </div>
     </div>
     <!-- Modal ketchup -->
-
-    <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content modal-xl">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
                 <div class="row">
-                <div class="col-lg-4 d-none d-lg-block " > <br><br><img src="{% static 'img/ketchup.jpg'%}" height="400" width="428"></div>
-                    <div class="col-lg-8" > <div class="{% plotly_class name='SimpleExample' %} card">
-                            {% plotly_app name='SimpleExample' ratio=0.66 %}
-                    </div> </div>
-
+                    <div class="col-lg-4 d-none d-lg-block">
+                        <br>
+                        <div class="image-container">
+                            <img src="{% static 'img/krisketchupsalsa410g.png'%}" height="420" width="210">
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="{% plotly_class name='SimpleExample' %} card">
+                                    {% plotly_app name='SimpleExample' ratio=0.66 %}
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="hidden-content" style="display: none;">
+                            <select id="selectproducto" name="select">
+                                <option value="select" disabled selected>Seleccione un producto...</option>
+                                <option value="SALSAS KETCHUP">SALSAS KETCHUP</option>
+                                <option value="SALSAS MAYONESA">SALSAS MAYONESA</option>
+                                <option value="SALSA MOSTAZA">SALSA MOSTAZA</option>
+                            </select>
+                            <label for="">Selecciona mes de producción</label>
+                            <input class="col-lg-4" type="month">
+                            <br><br>
+                            <div class="row-cols-lg-4">
+                             <form method="POST" action="{% url 'prediction' %}">
+                                {% csrf_token %}
+                                <div class="button" style="position: absolute; left: 20%; align-content: center; height: 55px; max-width: 300px; width: 50%; background: darkred; border-radius: 6px; cursor: pointer; box-shadow: 0 5px 10px rgba(239,236,236,0.2); overflow: hidden;">
+                                    <button type="submit" class="text" style="color: white; background: transparent; border: none; outline: none; cursor: pointer; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                        <i class="bx bx-cloud-upload"></i>
+                                        Generar predicción
+                                    </button>
+                                </div>
+                            </form>
+                                <br><br><br><br>
+                                <div>
+                                    <label class="text-xs font-weight-bold text-info text-uppercase mb-1" id="cant" style="color: #1b1b1b ;font-size: 15px; position: absolute;left: 7%"> </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" id="moreOptionsBtn">Más opciones</button>
             </div>
         </div>
     </div>
-     <!-- Modal avena -->
+</div>
 
-    <div class="modal fade" id="productModalavena" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content modal-xl">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="row">
-                <div class="col-lg-4 d-none d-lg-block " > <br><br><img src="{% static 'img/avena.jfif'%}" height="400" width="428"></div>
-                    <div class="col-lg-8" > <div class="{% plotly_class name='SimpleExample2' %} card">
-                            {% plotly_app name='SimpleExample2' ratio=0.66 %}
-                    </div> </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-     <!-- Modal azucaradoras -->
+<style>
+    .image-container {
+        margin-left: 2cm;
+    }
+</style>
 
-    <div class="modal fade" id="productModalazucaraditas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content modal-xl">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="row">
-                <div class="col-lg-4 d-none d-lg-block " > <br><br><img src="{% static 'img/azucaraditas.jpg'%}" height="400" width="428"></div>
-                    <div class="col-lg-8" > <div class="{% plotly_class name='SimpleExample7' %} card">
-                            {% plotly_app name='SimpleExample7' ratio=0.66 %}
-                    </div> </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-     <!-- Modal gelatina -->
 
-    <div class="modal fade" id="productModalgelatina" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content modal-xl">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="row">
-                <div class="col-lg-4 d-none d-lg-block " > <br><br><img src="{% static 'img/gelatinasinsabor.jpg'%}" height="400" width="428"></div>
-                    <div class="col-lg-8" > <div class="{% plotly_class name='SimpleExample3' %} card">
-                            {% plotly_app name='SimpleExample3' ratio=0.66 %}
-                    </div> </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-     <!-- Modal durazno en lata -->
-
-    <div class="modal fade" id="productModaldurazno" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content modal-xl">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="row">
-                <div class="col-lg-4 d-none d-lg-block " > <br><br><img src="{% static 'img/duraznos.png'%}" height="400" width="428"></div>
-                    <div class="col-lg-8" > <div class="{% plotly_class name='SimpleExample4' %} card">
-                            {% plotly_app name='SimpleExample4' ratio=0.66 %}
-                    </div> </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
      <!-- Modal mayonesa -->
 
-    <div class="modal fade" id="productModalmayonesa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content modal-xl">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
+ <div class="modal fade" id="productModalmayonesa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS MAYONESA</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
                 <div class="row">
-                <div class="col-lg-4 d-none d-lg-block " > <br><br><img src="{% static 'img/mayonesa.jpg'%}" height="400" width="428"></div>
-                    <div class="col-lg-8" > <div class="{% plotly_class name='SimpleExample5' %} card">
-                            {% plotly_app name='SimpleExample5' ratio=0.66 %}
-                    </div> </div>
-
+                    <div class="col-lg-4 d-none d-lg-block">
+                        <br>
+                        <div class="image-container">
+                            <img src="{% static 'img/krismayonesalsa410g.png'%}" height="420" width="210">
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="{% plotly_class name='SimpleExample2' %} card">
+                                    {% plotly_app name='SimpleExample2' ratio=0.66 %}
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="hidden-content" style="display: none;">
+                            <select id="selectproducto" name="select">
+                                <option value="select" disabled selected>Seleccione un producto...</option>
+                                <option value="SALSAS KETCHUP">SALSAS KETCHUP</option>
+                                <option value="SALSAS MAYONESA">SALSAS MAYONESA</option>
+                                <option value="SALSA MOSTAZA">SALSA MOSTAZA</option>
+                            </select>
+                            <label for="">Selecciona mes de producción</label>
+                            <input class="col-lg-4" type="month">
+                            <br><br>
+                            <div class="row-cols-lg-4">
+                             <form method="POST" action="{% url 'prediction' %}">
+                                {% csrf_token %}
+                                <div class="button" style="position: absolute; left: 20%; align-content: center; height: 55px; max-width: 300px; width: 50%; background: darkred; border-radius: 6px; cursor: pointer; box-shadow: 0 5px 10px rgba(239,236,236,0.2); overflow: hidden;">
+                                    <button type="submit" class="text" style="color: white; background: transparent; border: none; outline: none; cursor: pointer; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                        <i class="bx bx-cloud-upload"></i>
+                                        Generar predicción
+                                    </button>
+                                </div>
+                            </form>
+                                <br><br><br><br>
+                                <div>
+                                    <label class="text-xs font-weight-bold text-info text-uppercase mb-1" id="cant" style="color: #1b1b1b ;font-size: 15px; position: absolute;left: 7%"> </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" id="moreOptionsBtn">Más opciones</button>
             </div>
         </div>
     </div>
-     <!-- Modal levadura -->
+</div>
+     <!-- Modal mostaza -->
 
-    <div class="modal fade" id="productModallevadura" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content modal-xl">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
+ <div class="modal fade" id="productModalmostaza" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS MOSTAZAq</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
                 <div class="row">
-                <div class="col-lg-4 d-none d-lg-block " > <br><br><img src="{% static 'img/polvohornear.jfif'%}" height="400" width="428"></div>
-                    <div class="col-lg-8" > <div class="{% plotly_class name='SimpleExample6' %} card">
-                            {% plotly_app name='SimpleExample6' ratio=0.66 %}
-                    </div> </div>
-
+                    <div class="col-lg-4 d-none d-lg-block">
+                        <br>
+                        <div class="image-container">
+                            <img src="{% static 'img/krismostaza400g.png'%}" height="420" width="210">
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="{% plotly_class name='SimpleExample' %} card">
+                                    {% plotly_app name='SimpleExample' ratio=0.66 %}
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="hidden-content" style="display: none;">
+                            <select id="selectproducto" name="select">
+                                <option value="select" disabled selected>Seleccione un producto...</option>
+                                <option value="SALSAS KETCHUP">SALSAS KETCHUP</option>
+                                <option value="SALSAS MAYONESA">SALSAS MAYONESA</option>
+                                <option value="SALSA MOSTAZA">SALSA MOSTAZA</option>
+                            </select>
+                            <label for="">Selecciona mes de producción</label>
+                            <input class="col-lg-4" type="month">
+                            <br><br>
+                            <div class="row-cols-lg-4">
+                             <form method="POST" action="{% url 'prediction' %}">
+                                {% csrf_token %}
+                                <div class="button" style="position: absolute; left: 20%; align-content: center; height: 55px; max-width: 300px; width: 50%; background: darkred; border-radius: 6px; cursor: pointer; box-shadow: 0 5px 10px rgba(239,236,236,0.2); overflow: hidden;">
+                                    <button type="submit" class="text" style="color: white; background: transparent; border: none; outline: none; cursor: pointer; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                        <i class="bx bx-cloud-upload"></i>
+                                        Generar predicción
+                                    </button>
+                                </div>
+                            </form>
+                                <br><br><br><br>
+                                <div>
+                                    <label class="text-xs font-weight-bold text-info text-uppercase mb-1" id="cant" style="color: #1b1b1b ;font-size: 15px; position: absolute;left: 7%"> </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" id="moreOptionsBtn">Más opciones</button>
             </div>
         </div>
     </div>
+</div>
 
+         <!-- Modal prediccion -->
         <div class="modal fade" id="prediccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">
@@ -292,12 +316,7 @@
   <input class="col-lg-4" type="month" >
                         <br><br>
                         <div class="row-cols-lg-4">
-  <div  class="button" style="  position: absolute;left:  20%; align-content: center; height: 55px;max-width: 300px;width: 50%;background: darkred;border-radius: 6px;cursor: pointer;box-shadow: 0 5px 10px rgba(239,236,236,0.2);overflow: hidden;">
-    <div class="text-icon" style="height: 100% ;  width: 100%;display: flex;align-items: center;justify-content: center;">
-      <i class="bx bx-cloud-upload" style=" "></i>
-      <span class="text" style="color: white">Generar prediccion </span>
-    </div>
-  </div>
+
                             <br><br><br><br>
         <div>
               <label class="text-xs font-weight-bold text-info text-uppercase mb-1" id="cant" style="color: #1b1b1b ;font-size: 15px; position: absolute;left: 7% " > </label>
@@ -305,9 +324,6 @@
   <script>
     const button = document.querySelector(".button"),
     text = document.querySelector(".text");
-
-
-
     button.addEventListener("click", ()=>{
       button.classList.add("progress");
       text.innerText = "PREDICIENDO CANT/PRODUCCION";
@@ -322,7 +338,7 @@
        if (seleccionado === 'SALSAS KETCHUP') {
           cant1 = 10958
            document.getElementById("img").src="{% static 'img/ketchup.jpg' %}"
-           document.querySelector("#cant").innerText = " La cantidad preevista para "+seleccionado +" es de : "+cant1+"cant/produccion";
+           document.querySelector("#cant").innerText = " La cantidad preevista para "+seleccionado +" es de : 381.273 cant/produccion";
        }
        else if (seleccionado === 'AVENA INSTANTANEA') {
            cant1 =25874
@@ -351,10 +367,20 @@
            document.getElementById("img").src="{% static 'img/polvohornear.jfif' %}"
            document.querySelector("#cant").innerText = " La cantidad preevista para "+seleccionado +" es de : "+cant1+"cant/produccion";
        }
-      },6000); //1000ms = 1s (6000 = 6s)
+      },23000); //1000ms = 1s (6000 = 6s)
 
     });
   </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var moreOptionsBtn = document.getElementById("moreOptionsBtn");
+                var hiddenContent = document.querySelector(".hidden-content");
+                moreOptionsBtn.addEventListener("click", function() {
+                    hiddenContent.style.display = "block";
+                    hiddenContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+        </script>
 
 	</div>
        </div></div>

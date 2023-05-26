@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predicción de producción</title>
+</head>
+<body>
+    <h1>Predicción de producción de Salsa Ketchup KRIS</h1>
+
+    <form method="POST" action="{% url 'prediction' %}">
+        {% csrf_token %}
+        <label for="start_date">Fecha de inicio:</label>
+        <input type="date" id="start_date" name="start_date" required>
+
+        <label for="end_date">Fecha de fin:</label>
+        <input type="date" id="end_date" name="end_date" required>
+
+        <button type="submit">Predecir</button>
+    </form>
+
+    {% if predictions %}
+        <h2>Resultados de la predicción:</h2>
+        <p>Fecha de inicio: {{ start_date }}</p>
+        <p>Fecha de fin: {{ end_date }}</p>
+
+        <h3>Predicciones:</h3>
+        <ul>
+            {% for prediction in predictions %}
+                <li>{{ prediction }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Datos reales:</h3>
+        <ul>
+            {% for data in actual_data %}
+                <li>{{ data }}</li>
+            {% endfor %}
+        </ul>
+
+        <p>Error RMSE: {{ error }}</p>
+    {% endif %}
+</body>
+</html>
+

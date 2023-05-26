@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados de Predicción</title>
+</head>
+<body>
+    <h1>Resultados de Predicción</h1>
+
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% else %}
+        <h2>Resumen del mejor modelo</h2>
+        <pre>{{ summary }}</pre>
+
+        <h2>Predicciones</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Predicción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fecha, prediccion in predicciones %}
+                    <tr>
+                        <td>{{ fecha }}</td>
+                        <td>{{ prediccion }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Error de Predicción</h2>
+        <p>Error RMSE: {{ error }}</p>
+
+        <h2>Producción Adecuada</h2>
+        <p>Producción adecuada para el período seleccionado: {{ produccion_adecuada }}</p>
+
+        <h2>Nombre del Producto</h2>
+        <p>{{ nombre_producto }}</p>
+
+        <h2>Gráfico de Predicciones</h2>
+        <img src="predicciones.png" alt="Gráfico de Predicciones">
+
+    {% endif %}
+</body>
+</html>

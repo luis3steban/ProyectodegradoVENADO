@@ -1,0 +1,18 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="container">
+<div>
+    <body class="bg-gradient-danger">
+    <h2 class="text-gray-900"> <center> LINEA DE PRODUCTOS - SALSAS KRIS </center></h2>
+    </body>
+</div>
+    <br>
+        <br>
+        <img  src="{% static 'img/Bristar logo.png'%}" height="320" width="328" >
+        <a  class="img-profile rounded-circle" href="{% url 'prediccion' %}"> <img src="{% static 'img/logotipo principal kris.png'%}" height="400" width="428" > </a>
+            <img src="{% static 'img/fleshman.png'%}" height="200" width="280" ></div>
+                                                <! -- contenido de la ventana emergente-->
+
+{% endblock %}

@@ -45,20 +45,13 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">TENDENCIA DE MERCADO <img class="img-profile rounded-circle" src= "{% static "img/tendencia-icono.png" %}" width="60" height="58"  >
-                        <div> </div>
-
-                    </h1>
-
-                </div>
                 <div class="row">
                     {% block content %}
                     {% endblock %}
 
 
                 </div>
+
                 <!-- End of Main Content -->
             <!-- Content Row -->
                     <div class="row">
@@ -71,9 +64,8 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Produccion (Mensual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">C/ 40,000
-                                            <img class="img-profile rounded-circle"
-                                 src="{% static "img/ketchup.jpg" %}" height="120" width="108"></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">C/ 198,520
+                                            <img  src="{% static "img/krismayonesalsa410g.png" %}" height="120" width="60"></div>
                                         </div>
                                         <div class="col-auto">
 
@@ -91,9 +83,8 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Produccion (Anual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">  C/ 215,000
-                                            <img class="img-profile rounded-circle"
-                                 src="{%static "img/polvohornear.jfif"%}" height="120" width="108"></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">  C/ 326,400
+                                            <img src="{%static "img/krisketchupsalsa410g.png"%}" height="120" width="60"></div>
                                         </div>
                                         <div class="col-auto">
 
@@ -126,8 +117,7 @@
                                                     </div>
 
                                                 </div>
-                                                       <img class="img-profile rounded-circle"
-                                                         src="{% static "img/avena.jfif"%}" height="120" width="108">
+                                                       <img src="{% static "img/krismostaza400g.png"%}" height="120" width="60">
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -159,8 +149,7 @@
                                                     </div>
 
                                                 </div>
-                                                       <img class="img-profile rounded-circle"
-                                                         src="{% static "img/ketchup.jpg"%}" height="120" width="108">
+                                                       <img  style="margin-left: 2cm;" src="{% static "img/krismayonesalsa410g.png"%}" height="120" width="60">
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -174,162 +163,14 @@
 
                     <!-- Content Row -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">DASHBOARD & GRAFICOS - MARCA KRIS
+                    <h1 class="h3 mb-0 text-gray-800">DASHBOARD & GRAFICOS - SALSAS KRIS
                         <div> </div>
 
                     </h1>
-
                 </div>
-                    <div class="row">
-
-                        <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Crecimiento de Produccion - Salsas Ketchup</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Impacto de Marca</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Kris
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i>  Bristar
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Fleischmann
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- Content Column -->
-                        <div class="col-xl-8 col-lg-7">
-
-                            <!-- Project Card Example -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Productos mas vendidos</h6>
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="small font-weight-bold">SALSAS KETCHUP <span
-                                            class="float-right">36%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 56%"
-                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">SALSAS MAYONESA <span
-                                            class="float-right">28%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 48%"
-                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">AVENA INSTANTANEA<span
-                                            class="float-right">9%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 9%"
-                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">GELATINA SIN SABOR <span
-                                            class="float-right">13%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 33%"
-                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">POLVO DE HORNEAR <span
-                                            class="float-right">14%</span></h4>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 34%"
-                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Color System -->
-                            <div class="row">
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-xl-4 col-lg-5">
-
-                            <!-- Illustrations -->
-                            <div class="card shadow mb-4" >
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Impacto en Mercado</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" >
-
-        <div style="float:left;margin-right:50px;">
-            <canvas id="canvas1"></canvas>
-            <div id="leyenda1" class="leyenda"></div>
-        </div>
-
-        <div style="float:left;">
-            <canvas id="canvas2"></canvas>
-            <div id="leyenda2" class="leyenda leyendaH"></div>
-        </div>
-
+            <div class = "d-sm-flex align-items-center justify-content-between mb-4">
+                <iframe title="DASHBOARD & GRAFICOS - SALSAS KRIS " width="1650" height="695.025" src="https://app.powerbi.com/reportEmbed?reportId=0ad93c69-c9d3-4583-afe2-2a5769a2e5ac&autoAuth=true&ctid=77cab36c-76b2-48c3-9c54-cb9e4ee09b72" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
         <script>
             /**
              * Clase para generar graficos de pastel
