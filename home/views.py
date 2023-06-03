@@ -2,6 +2,7 @@ from django.shortcuts import render
 import pandas as pd
 import numpy as np
 from django.shortcuts import render, redirect , get_object_or_404
+from django.contrib.sites.shortcuts import get_current_site
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.http import JsonResponse
 from django_plotly_dash import DjangoDash
@@ -17,6 +18,7 @@ from sqlalchemy import create_engine
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from django.http import HttpResponse
 from django.template.loader import get_template
+from django.contrib.auth.hashers import make_password
 from xhtml2pdf import pisa
 from django.views import View
 from reportlab.pdfgen import canvas
@@ -29,6 +31,15 @@ import base64
 from django.template.loader import render_to_string
 from django.conf import settings
 from home.dash_apps.finished_apps import simpleexample
+from django.contrib.auth.models import User
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
+from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.urls import reverse
+import random
+import string
 # Create your views here.
 def home(requests):
     return render(requests, 'home/login.html')
@@ -37,6 +48,66 @@ def dash_modal_view(request):
 
 def marcas(requests):
     return render(requests, 'home/Marcas.html')
+
+def forgot_password(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+
+        try:
+            usuario = Usuarios.objects.get(correo=email)
+        except Usuarios.DoesNotExist:
+            return render(request, 'home/forgot-password.html', {'error_message': 'El correo electrónico no está registrado.'})
+
+        token = generate_reset_token()
+
+        usuario.reset_token = token
+        usuario.save()
+
+        send_password_reset_email(email, token)
+
+        return render(request, 'home/password_reset_email_sent.html')
+
+    return render(request, 'home/forgot-password.html')
+def reset_password(request, token):
+    try:
+        print(token)
+        user = Usuarios.objects.get(reset_token=token)
+        print(user)
+    except Usuarios.DoesNotExist:
+        return render(request, 'home/password_reset_invalid.html')
+
+    if user.reset_token == token:
+        if request.method == 'POST':
+            password = request.POST.get('password')
+            confirm_password = request.POST.get('confirm_password')
+
+            if password == confirm_password:
+                user.set_password(password)
+                user.reset_token = None
+                user.save()
+                return render(request, 'home/password_reset_success.html')
+            else:
+                return render(request, 'home/password_reset.html', {'token': token, 'error_message': 'Las contraseñas no coinciden.'})
+
+        return render(request, 'home/password_reset.html', {'token': token})
+    else:
+        return render(request, 'home/password_reset_invalid.html')
+def generate_reset_token():
+    letters_and_digits = string.ascii_letters + string.digits
+    token = ''.join(random.choice(letters_and_digits) for _ in range(16))
+    return token
+
+def send_password_reset_email(email, token):
+    domain = '127.0.0.1:8000'
+    reset_link = reverse('reset_password', args=[token])
+    reset_url = f"http://{domain}{reset_link}"
+
+    subject = 'Restablecimiento de contraseña'
+    message = f'Hola, has solicitado restablecer tu contraseña. Haz clic en el siguiente enlace para continuar: {reset_url}'
+    from_email = 'venadopredict@sandboxd00db2adb5d546d2ba28a6a4d3e76ee3.mailgun.org'
+    recipient_list = [email]
+    send_mail(subject, message, from_email, recipient_list)
+
 
 def reporteProduccion(requests):
     producciones = Produccion_venado.objects.all().order_by('fecha_produccion_mensual', 'cantidad_produccion')

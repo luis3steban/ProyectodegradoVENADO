@@ -5,23 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7bb119cb-4651-461e-a771-5f2e6a78060d" name="Changes" comment="version 2023.2-21">
-      <change afterPath="$PROJECT_DIR$/db_prueba.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/templates/home/moduloUsuarios.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/templates/home/reportedistribuicionVenado.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/templates/home/reporteproduccionVenado.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/templates/home/password_reset.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/templates/home/password_reset_email_sent.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/templates/home/password_reset_invalid.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/templates/home/password_reset_success.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProyectofinalArteaga/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectofinalArteaga/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/dash_apps/finished_apps/simpleexample.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/dash_apps/finished_apps/simpleexample.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/home/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/home/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/home/forgot-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/home/forgot-password.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/_sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_sidebar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/_topbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_topbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/prediction.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/prediction.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -313,7 +306,8 @@
       <workItem from="1685584273738" duration="5081000" />
       <workItem from="1685654465578" duration="2666000" />
       <workItem from="1685744157925" duration="8460000" />
-      <workItem from="1685759394176" duration="3569000" />
+      <workItem from="1685759394176" duration="6083000" />
+      <workItem from="1685796312411" duration="14067000" />
     </task>
     <task id="LOCAL-00001" summary="version 2023.2-21">
       <created>1684191098545</created>
@@ -329,7 +323,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685144166715</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="version 2023.2-21">
+      <created>1685763347925</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1685763347925</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

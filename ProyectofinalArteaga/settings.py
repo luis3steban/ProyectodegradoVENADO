@@ -75,6 +75,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ProyectofinalArteaga.wsgi.application'
 AUTH_USER_MODEL = 'home.Usuarios'
+# Configuración de correo electrónico utilizando Mailgun SMTP
+EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
+ANYMAIL = {
+    "MAILGUN_API_KEY": "f325c599a96fbf0741f4c95c109843d5-5d9bd83c-2ea9115d",  # Reemplaza con tu clave de API de Mailgun
+    "MAILGUN_SENDER_DOMAIN": "sandboxd00db2adb5d546d2ba28a6a4d3e76ee3.mailgun.org",  # Reemplaza con tu dominio registrado en Mailgun
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

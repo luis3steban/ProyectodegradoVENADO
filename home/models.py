@@ -94,7 +94,7 @@ class Usuarios(AbstractBaseUser):
     nombre_usuario = models.CharField(max_length=50, unique=True)
     correo = models.CharField(max_length=50, unique=True)
     acceso = models.ForeignKey(Accesos, on_delete=models.CASCADE)
-    is_admin = models.BooleanField(default=False)
+    reset_token = models.CharField(max_length=100, null=True, blank=True)
 
     objects = UsuariosManager()
 
