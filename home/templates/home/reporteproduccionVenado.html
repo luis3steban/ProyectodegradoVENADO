@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="table-responsive">
+            <table id="produccionesTable" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Fecha Producción Mensual</th>
+                        <th>Nombre Producto</th>
+                        <th>Cantidad de Producción Mensual</th>
+                        <th>Cont Net</th>
+                        <th>Línea de Producto</th>
+                        <th>Marca de Producto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produccion in producciones %}
+                        <tr>
+                            <td>{{ produccion.fecha_produccion_mensual }}</td>
+                            <td>{{ produccion.producto.nombre_producto }}</td>
+                            <td>{{ produccion.cantidad_produccion }} unidades. </td>
+                            <td>{{ produccion.producto.cont_net }}</td>
+                            <td>{{ produccion.producto.linea_producto }}</td>
+                            <td>{{ produccion.marca_producto }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Scripts de DataTables y Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+{% endblock %}

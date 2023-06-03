@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="table-responsive">
+            <table id="distribucionTable" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Fecha distribucion Mensual</th>
+                        <th>Nombre Producto</th>
+                        <th>Cont_neto</th>
+                        <th>Linea de producto venado</th>
+                        <th>Canal de distribucion HORIZONTAL</th>
+                        <th>Canal de distribucion MODERNO</th>
+                        <th>Canal de distribucion TRADICIONAL</th>
+                        <th>Cantidad de distribucion Total</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    {% for distribucion in distribuciones %}
+                        <tr>
+                            <td>{{ distribucion.fecha_distribucion_mensual }}</td>
+                            <td>{{ distribucion.producto.nombre_producto }}</td>
+                            <td>{{ distribucion.producto.cont_net }}</td>
+                            <td>{{ distribucion.producto.linea_producto }}</td>
+                            <td>{{ distribucion.canal_horizontal }} unidades.</td>
+                            <td>{{ distribucion.canal_moderno }} unidades.</td>
+                            <td>{{ distribucion.canal_tradicional }} unidades. </td>
+                            <td>{{ distribucion.total_cantidad_distribucion }} unidades. </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Scripts de DataTables y Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+{% endblock %}

@@ -13,7 +13,8 @@
     <meta name="author" content="">
 
     <title>Industrias Venado Predict - Dashboard</title>
-
+    <!-- Incluir los estilos CSS de DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/style.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %} " rel="stylesheet" type="text/css">
@@ -27,6 +28,7 @@
     <link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -88,69 +90,68 @@
             </div>
         </div>
     </div>
-    <!-- Modal ketchup -->
+<!-- Modal ketchup -->
 <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-4 d-none d-lg-block">
+            <br>
+            <div class="image-container">
+              <img src="{% static 'img/krisketchupsalsa410g.png'%}" height="420" width="210">
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-lg-4 d-none d-lg-block">
-                        <br>
-                        <div class="image-container">
-                            <img src="{% static 'img/krisketchupsalsa410g.png'%}" height="420" width="210">
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="{% plotly_class name='SimpleExample' %} card">
-                                    {% plotly_app name='SimpleExample' ratio=0.66 %}
-                                </div>
-                            </div>
-                        </div>
-                        <br><br>
-                        <div class="hidden-content" style="display: none;">
-                            <select id="selectproducto" name="select">
-                                <option value="select" disabled selected>Seleccione un producto...</option>
-                                <option value="SALSAS KETCHUP">SALSAS KETCHUP</option>
-                                <option value="SALSAS MAYONESA">SALSAS MAYONESA</option>
-                                <option value="SALSA MOSTAZA">SALSA MOSTAZA</option>
-                            </select>
-                            <label for="">Selecciona mes de producción</label>
-                            <input class="col-lg-4" type="month">
-                            <br><br>
-                            <div class="row-cols-lg-4">
-                             <form method="POST" action="{% url 'prediction' %}">
-                                {% csrf_token %}
-                                <div class="button" style="position: absolute; left: 20%; align-content: center; height: 55px; max-width: 300px; width: 50%; background: darkred; border-radius: 6px; cursor: pointer; box-shadow: 0 5px 10px rgba(239,236,236,0.2); overflow: hidden;">
+          </div>
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="{% plotly_class name='SimpleExample' %} card">
+                  {% plotly_app name='SimpleExample' ratio=0.66 %}
+                </div>
+              </div>
+            </div>
+            <br><br>
+            <div class="hidden-content" style="display: none;">
+              <form method="POST" action="{% url 'prediction' %}">
+                {% csrf_token %}
+                <select id="selectproducto" name="nom_prod">
+                  <option value="" disabled selected>Seleccione un producto...</option>
+                  <option value="KRIS KETCHUP">KRIS KETCHUP</option>
+                  <option value="SALSAS MAYONESA">SALSAS MAYONESA</option>
+                  <option value="SALSA MOSTAZA">SALSA MOSTAZA</option>
+                </select>
+                <label for="fecha_pred">Selecciona mes de producción</label>
+                <input class="col-lg-4" type="month" id="fecha_pred" name="fecha_pred">
+                <br><br>
+                <div class="row-cols-lg-4">
+                               <div class="button" style="position: absolute; left: 20%; align-content: center; height: 55px; max-width: 300px; width: 50%; background: darkred; border-radius: 6px; cursor: pointer; box-shadow: 0 5px 10px rgba(239,236,236,0.2); overflow: hidden;">
                                     <button type="submit" class="text" style="color: white; background: transparent; border: none; outline: none; cursor: pointer; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
                                         <i class="bx bx-cloud-upload"></i>
                                         Generar predicción
                                     </button>
                                 </div>
-                            </form>
-                                <br><br><br><br>
-                                <div>
-                                    <label class="text-xs font-weight-bold text-info text-uppercase mb-1" id="cant" style="color: #1b1b1b ;font-size: 15px; position: absolute;left: 7%"> </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+              </form>
+              <br><br><br><br>
+              <div>
+                <label class="text-xs font-weight-bold text-info text-uppercase mb-1" id="cant" style="color: #1b1b1b ;font-size: 15px; position: absolute;left: 7%"> </label>
+              </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="button" id="moreOptionsBtn">Más opciones</button>
-            </div>
+          </div>
         </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="button" id="moreOptionsBtn">Más opciones</button>
+      </div>
     </div>
+  </div>
 </div>
-
 
 <style>
     .image-container {
@@ -252,41 +253,52 @@
                         </div>
                         <br><br>
                         <div class="hidden-content" style="display: none;">
-                            <select id="selectproducto" name="select">
-                                <option value="select" disabled selected>Seleccione un producto...</option>
-                                <option value="SALSAS KETCHUP">SALSAS KETCHUP</option>
-                                <option value="SALSAS MAYONESA">SALSAS MAYONESA</option>
-                                <option value="SALSA MOSTAZA">SALSA MOSTAZA</option>
-                            </select>
-                            <label for="">Selecciona mes de producción</label>
-                            <input class="col-lg-4" type="month">
-                            <br><br>
-                            <div class="row-cols-lg-4">
-                             <form method="POST" action="{% url 'prediction' %}">
-                                {% csrf_token %}
-                                <div class="button" style="position: absolute; left: 20%; align-content: center; height: 55px; max-width: 300px; width: 50%; background: darkred; border-radius: 6px; cursor: pointer; box-shadow: 0 5px 10px rgba(239,236,236,0.2); overflow: hidden;">
-                                    <button type="submit" class="text" style="color: white; background: transparent; border: none; outline: none; cursor: pointer; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                        <i class="bx bx-cloud-upload"></i>
-                                        Generar predicción
-                                    </button>
-                                </div>
-                            </form>
-                                <br><br><br><br>
-                                <div>
-                                    <label class="text-xs font-weight-bold text-info text-uppercase mb-1" id="cant" style="color: #1b1b1b ;font-size: 15px; position: absolute;left: 7%"> </label>
-                                </div>
-                            </div>
+                                <form id="prediction-form">
+                                  <div class="hidden-content" style="display: none;">
+                                    <select id="selectproducto" name="nom_prod">
+                                      <option value="" disabled selected>Seleccione un producto...</option>
+                                      <option value="SALSAS KETCHUP">SALSAS KETCHUP</option>
+                                      <option value="SALSAS MAYONESA">SALSAS MAYONESA</option>
+                                      <option value="SALSA MOSTAZA">SALSA MOSTAZA</option>
+                                    </select>
+                                    <label for="fecha_pred">Selecciona mes de producción</label>
+                                    <input class="col-lg-4" type="month" id="fecha_pred" name="fecha_pred">
+                                    <br><br>
+                                    <div class="row-cols-lg-4">
+                                      <button type="button" onclick="submitForm()">Generar predicción</button>
+                                    </div>
+                                  </div>
+                                </form>
                         </div>
                     </div>
                 </div>
-            </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" type="button" id="moreOptionsBtn">Más opciones</button>
             </div>
         </div>
     </div>
 </div>
+<script>
+    // Obtener referencias a los elementos del DOM
+    const selectProducto = document.getElementById("selectproducto");
+    const inputMesProduccion = document.querySelector("input[type='month']");
+    const resultadoLabel = document.getElementById("resultado");
 
+    // Escuchar el evento de envío del formulario
+    document.querySelector("form").addEventListener("{% url 'prediction' %}", function(event) {
+        event.preventDefault(); // Evitar el envío del formulario por defecto
+
+        // Obtener los valores seleccionados
+        const productoSeleccionado = selectProducto.value;
+        const mesProduccionSeleccionado = inputMesProduccion.value;
+
+        // Mostrar los valores seleccionados en el label
+        resultadoLabel.textContent = `Producto seleccionado: ${productoSeleccionado}, Mes de producción seleccionado: ${mesProduccionSeleccionado}`;
+
+        // Continuar con el envío del formulario si es necesario
+        this.submit();
+    });
+</script>
          <!-- Modal prediccion -->
         <div class="modal fade" id="prediccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -321,6 +333,27 @@
         <div>
               <label class="text-xs font-weight-bold text-info text-uppercase mb-1" id="cant" style="color: #1b1b1b ;font-size: 15px; position: absolute;left: 7% " > </label>
         </div>
+    <script>
+        // Obtener referencias a los elementos del DOM
+        const selectProducto = document.getElementById("selectproducto");
+        const inputMesProduccion = document.getElementById("mesProduccion");
+        const resultado = document.getElementById("resultado");
+
+        // Escuchar el evento de envío del formulario
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evitar el envío del formulario por defecto
+
+            // Obtener los valores seleccionados
+            const productoSeleccionado = selectProducto.value;
+            const mesProduccionSeleccionado = inputMesProduccion.value;
+
+            // Mostrar los valores seleccionados en la página
+            resultado.innerHTML = `Producto seleccionado: ${productoSeleccionado}, Mes de producción seleccionado: ${mesProduccionSeleccionado}`;
+
+            // Continuar con el envío del formulario si es necesario
+            this.submit();
+        });
+    </script>
   <script>
     const button = document.querySelector(".button"),
     text = document.querySelector(".text");
@@ -407,5 +440,71 @@
             <!-- Page level custom scripts -->
             <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
             <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+                <!-- Incluir los scripts JavaScript de DataTables -->
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#produccionesTable').DataTable({
+                // Configuración de DataTables
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }
+            });
+        });
+    </script>
+        <script>
+        $(document).ready(function() {
+            $('#distribucionTable').DataTable({
+                // Configuración de DataTables
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>

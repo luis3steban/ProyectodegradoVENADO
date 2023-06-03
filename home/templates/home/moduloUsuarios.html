@@ -1,0 +1,487 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <h1 class="mt-4">Módulo de Usuarios</h1>
+
+<div class="accordion" id="accesosAccordion">
+  <div class="card">
+    <div class="card-header" id="accesosHeading">
+        <span class="accordion-toggle" data-toggle="collapse" data-target="#accesosCollapse" aria-expanded="true" aria-controls="accesosCollapse">
+          <span class="text">Accesos</span>
+          <span class="icon"><i class="fas fa-chevron-down"></i></span>
+        </span>
+    </div>
+    <div id="accesosCollapse" class="collapse show" aria-labelledby="accesosHeading" data-parent="#accesosAccordion">
+      <div class="card-body">
+          <!-- Botón para agregar nuevo acceso -->
+          <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#agregarModal">Agregar Acceso</button>
+          <!-- Tabla de accesos -->
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Acceso Predict</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for acceso in accesos %}
+                  <tr id="acceso-{{ acceso.id }}">
+                    <td>{{ acceso.id }}</td>
+                    <td><span id="acceso-predict-{{ acceso.id }}">{{ acceso.acceso_predict }}</span></td>
+                    <td><span id="descripcion-{{ acceso.id }}">{{ acceso.descripcion }}</span></td>
+                    <td id="acciones-{{ acceso.id }}">
+                      {% if not acceso.en_edicion %}
+                        <!-- Botón para modificar acceso -->
+                        <button class="btn btn-warning btn-sm" onclick="editarAcceso({{ acceso.id }})">Modificar</button>
+                        <!-- Botón para eliminar acceso -->
+                        <button class="btn btn-danger btn-sm" onclick="eliminarAcceso({{ acceso.id }})">Eliminar</button>
+                      {% else %}
+                        <!-- Botón para guardar cambios -->
+                        <button class="btn btn-primary btn-sm" onclick="guardarCambios({{ acceso.id }})">Guardar</button>
+                      {% endif %}
+                    </td>
+                  </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- JS de Bootstrap (requiere jQuery) -->
+<!-- CSS de Bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- Iconos de Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- JS de Bootstrap (requiere jQuery) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style>
+.accordion-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.accordion-toggle .text {
+  flex-grow: 1;
+}
+
+.accordion-toggle .icon {
+  margin-left: 10px;
+}
+.select-accesosf {
+  background-color: white !important;
+  color: black !important;
+  border-color: black !important;
+  padding: 5px !important;
+}
+</style>
+
+<script>
+  $(document).ready(function () {
+    $('.accordion-toggle').click(function () {
+      var target = $(this).attr('data-target');
+      $(target).slideToggle('slow');
+      $(this).find('.fas').toggleClass('fa-chevron-up fa-chevron-down');
+    });
+  });
+</script>
+
+<!-- Tabla de usuarios -->
+<h2>Usuarios</h2>
+<button class="btn btn-primary" data-toggle="modal" data-target="#agregarUsuarioModal">Agregar Usuario</button>
+<table class="table table-striped">
+  <!-- Encabezado de la tabla -->
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Acceso</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Filas de la tabla -->
+    {% for usuario in usuarios %}
+    <tr id="usuario-{{ usuario.id }}">
+      <td>{{ usuario.id }}</td>
+      <td><span id="nombre-{{ usuario.id }}">{{ usuario.nombre_usuario }}</span></td>
+      <td><span id="email-{{ usuario.id }}">{{ usuario.correo }}</span></td>
+      <td><span id="acceso-{{ usuario.id }}">{{ usuario.acceso.acceso_predict }}</span></td>
+      <td id="accionesus-{{ usuario.id }}">
+        {% if not usuario.en_edicion %}
+          <!-- Botón para modificar usuario -->
+          <button class="btn btn-warning btn-sm" onclick="editarUsuario({{ usuario.id }})">Modificar</button>
+          <!-- Botón para eliminar usuario -->
+          <button class="btn btn-danger btn-sm" onclick="eliminarUsuario({{ usuario.id }})">
+            Eliminar
+          </button>
+        {% else %}
+          <!-- Botón para guardar cambios -->
+          <button class="btn btn-primary btn-sm" onclick="guardarCambiosUsuario({{ usuario.id }})">
+            Guardar
+          </button>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- Modal para agregar usuario -->
+<div class="modal fade" id="agregarUsuarioModal" tabindex="-1" role="dialog" aria-labelledby="agregarUsuarioModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="agregarUsuarioModalLabel">Agregar Usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{% url 'agregar_usuario' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="nombre_usuario">Nombre</label>
+            <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario"
+              placeholder="Ingrese el nombre del usuario" required>
+          </div>
+          <div class="form-group">
+            <label for="correo">Correo</label>
+            <input type="email" class="form-control" id="correo" name="correo"
+              placeholder="Ingrese el correo electrónico" required>
+          </div>
+          <div class="form-group">
+            <label for="acceso">Acceso</label>
+            <select class="form-control" id="acceso" name="acceso" required>
+              {% for acceso in accesos %}
+                <option value="{{ acceso.id }}">{{ acceso.acceso_predict }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <div class="input-group">
+              <input type="password" class="form-control" id="password_usuario" name="password_usuario"
+                placeholder="Ingrese la contraseña del usuario" required>
+              <div class="input-group-append">
+                <span class="input-group-text toggle-password" id="togglePassword">
+                  <i class="fas fa-eye-slash"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    // Mostrar u ocultar la contraseña al hacer clic en el botón de ojo
+    $('.toggle-password').click(function() {
+      $(this).toggleClass('show-password');
+      var input = $(this).closest('.input-group').find('input');
+      if (input.attr('type') === 'password') {
+        input.attr('type', 'text');
+      } else {
+        input.attr('type', 'password');
+      }
+    });
+  });
+</script>
+<script>
+function editarUsuario(usuarioId) {
+  var nombreUsuario = $('#nombre-' + usuarioId).text();
+  var correo = $('#email-' + usuarioId).text();
+
+  // Obtener el acceso actual del usuario
+  var accesoElement = $('#acceso-' + usuarioId);
+  var accesoPredict = accesoElement.text().trim();
+  var accesoId = accesoElement.attr('data-acceso-id');
+
+  // Agregamos la clase "en-edicion" a las celdas de la tabla
+  $('#nombre-' + usuarioId).addClass('en-edicion');
+  $('#email-' + usuarioId).addClass('en-edicion');
+  accesoElement.addClass('en-edicion');
+
+  // Actualizamos el contenido de las celdas con campos de edición
+  $('#nombre-' + usuarioId).html('<input type="text" class="form-control" id="nombre-edit-' + usuarioId + '" value="' + nombreUsuario + '">');
+  $('#email-' + usuarioId).html('<input type="text" class="form-control" id="email-edit-' + usuarioId + '" value="' + correo + '">');
+
+  // Agregar campo de selección para el tipo de acceso
+  var selectElement = $('<select class="form-control" id="acceso-edit-' + usuarioId + '"></select>');
+
+  // Realizar una solicitud AJAX para obtener las opciones de acceso
+  $.ajax({
+    url: '/obtener_opciones_acceso/',  // Ruta de la vista Django que devuelve las opciones de acceso
+    type: 'GET',
+    dataType: 'json',
+    success: function(opcionesAcceso) {
+      for (var i = 0; i < opcionesAcceso.length; i++) {
+        var opcion = opcionesAcceso[i];
+        var optionElement = $('<option></option>').val(opcion.id).text(opcion.acceso_predict);
+
+        // Establecer la opción seleccionada según el acceso actual del usuario
+        if (opcion.id === accesoId) {
+          optionElement.attr('selected', 'selected');
+        }
+
+        selectElement.append(optionElement);
+      }
+
+      // Agregar la clase de estilo al select
+      selectElement.addClass('select-accesosf');
+
+      // Agregar el select al elemento de acceso
+      accesoElement.html(selectElement);
+    },
+    error: function(xhr, textStatus, errorThrown) {
+      console.log('Error al obtener las opciones de acceso:', errorThrown);
+    }
+  });
+
+  // Agregar botón de guardar
+  var guardarButton = $('<button class="btn btn-primary btn-sm" onclick="guardarCambiosUsuario(' + usuarioId + ')">Guardar</button>');
+  $('#accionesus-' + usuarioId).html(guardarButton);
+}
+
+// Función para guardar los cambios
+function guardarCambiosUsuario(usuarioId) {
+  var nombreUsuario = $('#nombre-edit-' + usuarioId).val();
+  var correo = $('#email-edit-' + usuarioId).val();
+  var accesoId = $('#acceso-edit-' + usuarioId).val();
+  var csrfToken = getCookie('csrftoken'); // Obtener el token CSRF
+
+  // Realizar la petición AJAX para guardar los cambios
+  $.ajax({
+    url: '/modificar-usuario/',
+    type: 'POST',
+    data: {
+      'usuario_id': usuarioId,
+      'nombre_usuario': nombreUsuario,
+      'correo': correo,
+      'acceso_id': accesoId,
+      'csrfmiddlewaretoken': csrfToken
+    },
+    success: function(response) {
+      // Actualizar el contenido de las celdas con los nuevos valores
+      $('#nombre-' + usuarioId).text(nombreUsuario);
+      $('#email-' + usuarioId).text(correo);
+      $('#acceso-' + usuarioId).text($('#acceso-edit-' + usuarioId + ' option:selected').text());
+
+      // Remover la clase "en-edicion" de las celdas de la tabla
+      $('#nombre-' + usuarioId).removeClass('en-edicion');
+      $('#email-' + usuarioId).removeClass('en-edicion');
+      $('#acceso-' + usuarioId).removeClass('en-edicion');
+      $('#accionesus-' + usuarioId).removeClass('en-edicion');
+
+      // Restaurar los botones de modificar y eliminar
+      $('#accionesus-' + usuarioId).html('<button class="btn btn-warning btn-sm" onclick="editarUsuario(' + usuarioId + ')">Modificar</button> <button class="btn btn-danger btn-sm" onclick="eliminarUsuario(' + usuarioId + ')">Eliminar</button>');
+    },
+    error: function(xhr, status, error) {
+      // Manejar el error en caso de que ocurra
+      console.log(xhr.responseText);
+    }
+  });
+}
+    // Función para eliminar un usuario
+    function eliminarUsuario(usuarioId) {
+      var csrfToken = getCookie('csrftoken'); // Obtener el token CSRF
+
+      // Realizar la petición AJAX para eliminar el usuario
+      $.ajax({
+        url: '/eliminar-usuario/' + usuarioId + '/',
+        type: 'POST',
+        data: {
+          'csrfmiddlewaretoken': csrfToken
+        },
+        success: function(response) {
+          // Eliminar la fila correspondiente en la tabla
+          $('#usuario-' + usuarioId).remove();
+
+          // Mostrar mensaje de éxito o realizar cualquier otra acción necesaria
+          console.log('Usuario eliminado exitosamente');
+        },
+        error: function(xhr, status, error) {
+          // Mostrar mensaje de error o manejarlo de acuerdo a tus necesidades
+          console.log('Error al eliminar usuario');
+        }
+      });
+    }
+
+    // Obtener el valor del token CSRF del cookie
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          // Buscar el nombre del token CSRF en la cookie
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+</script>
+  <!-- Mensaje de advertencia -->
+<div class="alert alert-warning">
+  <strong>Precaución:</strong> Los datos mostrados son confidenciales y su modificación debe realizarse con extrema precaución. Verifica cuidadosamente cualquier cambio antes de confirmarlo.
+</div>
+
+
+
+
+<!-- Modal para agregar acceso -->
+<div class="modal fade" id="agregarModal" tabindex="-1" role="dialog" aria-labelledby="agregarModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="agregarModalLabel">Agregar Acceso</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{% url 'agregar_acceso' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="acceso_predict">Acceso Predict</label>
+            <input type="text" class="form-control" id="acceso_predict" name="acceso_predict"
+              placeholder="Ingrese el acceso predict" required>
+          </div>
+          <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <input type="text" class="form-control" id="descripcion" name="descripcion"
+              placeholder="Ingrese la descripción" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script>
+  // Función para editar un acceso
+  function editarAcceso(accesoId) {
+    var accesoPredict = $('#acceso-predict-' + accesoId).text();
+    var descripcion = $('#descripcion-' + accesoId).text();
+
+    // Agregamos la clase "en-edicion" a las celdas de la tabla
+    $('#acceso-predict-' + accesoId).addClass('en-edicion');
+    $('#descripcion-' + accesoId).addClass('en-edicion');
+    $('#acciones').addClass('en-edicion');
+
+    // Actualizamos el contenido de las celdas con campos de edición
+    $('#acceso-predict-' + accesoId).html('<input type="text" class="form-control" id="acceso-predict-edit-' + accesoId + '" value="' + accesoPredict + '">');
+    $('#descripcion-' + accesoId).html('<input type="text" class="form-control" id="descripcion-edit-' + accesoId + '" value="' + descripcion + '">');
+
+    // Agregar botón de guardar
+    $('#acciones-' + accesoId).html('<button class="btn btn-primary btn-sm" onclick="guardarCambios(' + accesoId + ')">Guardar</button>');
+  }
+
+    // Función para guardar los cambios
+      function guardarCambios(accesoId) {
+      var accesoPredict = $('#acceso-predict-edit-' + accesoId).val();
+      var descripcion = $('#descripcion-edit-' + accesoId).val();
+      var csrfToken = getCookie('csrftoken'); // Obtener el token CSRF
+
+      // Realizar la petición AJAX para guardar los cambios
+      $.ajax({
+        url: '/modificar-acceso/',
+        type: 'POST',
+        data: {
+          'acceso_id': accesoId,
+          'acceso_predict': accesoPredict,
+          'descripcion': descripcion,
+          'csrfmiddlewaretoken': csrfToken
+        },
+        success: function(response) {
+          // Actualizar el contenido de las celdas con los nuevos valores
+          $('#acceso-predict-' + accesoId).text(accesoPredict);
+          $('#descripcion-' + accesoId).text(descripcion);
+
+          // Remover la clase "en-edicion" de las celdas de la tabla
+          $('#acceso-predict-' + accesoId).removeClass('en-edicion');
+          $('#descripcion-' + accesoId).removeClass('en-edicion');
+
+          // Restaurar los botones de modificar y eliminar
+          $('#acciones-' + accesoId).html('<button class="btn btn-warning btn-sm" onclick="editarAcceso(' + accesoId + ')">Modificar</button> <button class="btn btn-danger btn-sm" onclick="eliminarAcceso(' + accesoId + ')">Eliminar</button>');
+        },
+        error: function(xhr, status, error) {
+          // Manejar el error en caso de que ocurra
+          console.log(xhr.responseText);
+        }
+      });
+    }
+
+
+  // Obtener el valor del token CSRF del cookie
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        // Buscar el nombre del token CSRF en la cookie
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  // Incluir el token CSRF en la solicitud AJAX
+function eliminarAcceso(accesoId) {
+  // Obtener el valor del token CSRF
+  const csrfToken = getCookie('csrftoken');
+
+  // Realizar la petición AJAX para eliminar el acceso
+  $.ajax({
+    url: '/eliminar-acceso/',
+    type: 'POST',
+    data: {
+      'acceso_id': accesoId,
+      'csrfmiddlewaretoken': csrfToken
+    },
+    success: function(response) {
+      // Eliminar la fila correspondiente en la tabla
+      $('#acceso-' + accesoId).remove();
+
+      // Recargar la página para refrescar la tabla
+      location.reload();
+    },
+    error: function(xhr, status, error) {
+      // Manejar el error en caso de que ocurra
+      console.log(xhr.responseText);
+    }
+  });
+}
+
+</script>
+<!-- CSS de Bootstrap -->
+
+{% endblock %}

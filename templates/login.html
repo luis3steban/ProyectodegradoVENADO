@@ -20,68 +20,73 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href=" {% static 'css/sb-admin-2.min.css'%}" rel="stylesheet">
+    <link href="{% static 'css/sb-admin-2.min.css'%}" rel="stylesheet">
 
 </head>
 
 <body class="bg-gradient-danger">
 
-    <div class="container">
+<div class="container">
 
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
 
-            <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="col-xl-10 col-lg-12 col-md-9">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block " > <img src="static/img/logotipo principal.png"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <br>
-                                        <h1 class="h4 text-gray-900 mb-4">Bienvenido!</h1>
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block"><img src="static/img/logotipo principal.png"></div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <br>
+                                    <h1 class="h4 text-gray-900 mb-4">Bienvenido!</h1>
+                                </div>
+                                <form class="user" method="POST" action="{% url 'login' %}">
+                                    {% csrf_token %}
+                                    <br>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control form-control-user"
+                                            id="exampleInputEmail" name="correo" aria-describedby="emailHelp"
+                                            placeholder="Ingresa correo electrónico...." required>
                                     </div>
-                                    <form class="user">
-                                        <br>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Ingresa correo electronico....">
-                                        </div>
-                                        <div class="form-group">
+                                    <div class="form-group">
+                                        <div class="input-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Contraseña">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Recuerdame</label>
+                                                id="exampleInputPassword" name="password" placeholder="Contraseña" required>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="togglePassword">
+                                                    <i class="fas fa-eye"></i>
+                                                </span>
                                             </div>
                                         </div>
-                                        <a href="{% url 'dashboard' %}" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
-
-                                    </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="{% url 'contraolvidada' %}">¿Has olvidado tu contraseña?</a>
                                     </div>
-
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox small">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck">
+                                            <label class="custom-control-label" for="customCheck">Recuérdame</label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
+                                </form>
+                                <hr>
+                                <div class="text-center">
+                                    <a class="small" href="{% url 'contraolvidada' %}">¿Has olvidado tu contraseña?</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
 
     </div>
+
+</div>
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
@@ -93,6 +98,25 @@
     <!-- Custom scripts for all pages-->
     <script src="{% static 'js/sb-admin-2.min.js'%}"></script>
 
+    <!-- Script to toggle password visibility -->
+    <script>
+        $(document).ready(function () {
+            $("#togglePassword").click(function () {
+                var passwordInput = $("#exampleInputPassword");
+                var passwordFieldType = passwordInput.attr("type");
+
+                if (passwordFieldType === "password") {
+                    passwordInput.attr("type", "text");
+                    $("#togglePassword i").removeClass("fa-eye").addClass("fa-eye-slash");
+                } else {
+                    passwordInput.attr("type", "password");
+                    $("#togglePassword i").removeClass("fa-eye-slash").addClass("fa-eye");
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
+

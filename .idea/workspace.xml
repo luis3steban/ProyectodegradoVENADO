@@ -5,58 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7bb119cb-4651-461e-a771-5f2e6a78060d" name="Changes" comment="version 2023.2-21">
-      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/krisketchupsalsa410g.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/krismayonesalsa410g.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/krismostaza400g.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/userlogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generar_graficaVenado.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/dash_apps/finished_apps/ModeloPredictivoVENADO.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/dash_apps/finished_apps/modelopredictivocantidadprodvenado.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/dash_apps/finished_apps/produccion-venado-2020.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/prediction_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/produccionketchupmensual.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/templates/home/prediction.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/templates/home/prediction_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/templates/home/prediction_result.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/templates/produccionmayonesamensual.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/produccionketchupmensual.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/produccionmayonesamensual.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simpleexample.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/krisketchupsalsa410g.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/krismayonesalsa410g.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/krismostaza400g.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/Bienvenido.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/Marcas.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/dashboard-comparacion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/forgot-password.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/prediction.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/prediction_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/prediction_result.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/utils/pdf_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ProyectofinalArteaga.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ProyectofinalArteaga.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1f2c20f8-c3ff-40ed-a50e-86862fc30109.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/rSettings.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/db_prueba.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/templates/home/moduloUsuarios.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/templates/home/reportedistribuicionVenado.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/templates/home/reporteproduccionVenado.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProyectofinalArteaga/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectofinalArteaga/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectofinalArteaga/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectofinalArteaga/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/dash_apps/finished_apps/simpleexample.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/dash_apps/finished_apps/simpleexample.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/Marcas.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/home/Marcas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/home/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/home/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/forgot-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/home/forgot-password.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/home/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/home/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/css/nav_sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/css/nav_sidebar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/sb-admin-2.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/sb-admin-2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/logotipo principal kris.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/logotipo principal kris.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/partials/_sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_sidebar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/partials/_topbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_topbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/prediction.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/prediction.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,8 +37,8 @@
         <option value="R Script" />
         <option value="CSS File" />
         <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -135,7 +100,7 @@
       <recent name="C:\Users\usuario\Desktop\ProyectoFinalArteaga\static\js" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.simpleexample">
+  <component name="RunManager" selected="Python.db_prueba">
     <configuration name="ModeloPredictivoVENADO" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ProyectoFinalArteaga" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -150,6 +115,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/home/dash_apps/finished_apps/ModeloPredictivoVENADO.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="db_prueba" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ProyectoFinalArteaga" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/db_prueba.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -228,12 +215,14 @@
     </configuration>
     <list>
       <item itemvalue="Django Server.ProyectoFinalArteaga" />
+      <item itemvalue="Python.db_prueba" />
       <item itemvalue="Python.generar_graficaVenado" />
       <item itemvalue="Python.simpleexample" />
       <item itemvalue="Python.ModeloPredictivoVENADO" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.db_prueba" />
         <item itemvalue="Python.simpleexample" />
         <item itemvalue="Python.generar_graficaVenado" />
         <item itemvalue="Python.ModeloPredictivoVENADO" />
@@ -309,7 +298,22 @@
       <workItem from="1685019001619" duration="416000" />
       <workItem from="1685020512634" duration="1599000" />
       <workItem from="1685107241195" duration="5890000" />
-      <workItem from="1685142822432" duration="1022000" />
+      <workItem from="1685142822432" duration="16766000" />
+      <workItem from="1685162994389" duration="3554000" />
+      <workItem from="1685193609857" duration="12989000" />
+      <workItem from="1685208220171" duration="19356000" />
+      <workItem from="1685242549425" duration="3386000" />
+      <workItem from="1685278079801" duration="4899000" />
+      <workItem from="1685284105520" duration="37485000" />
+      <workItem from="1685369338320" duration="17580000" />
+      <workItem from="1685456580329" duration="1143000" />
+      <workItem from="1685472753792" duration="1704000" />
+      <workItem from="1685499388303" duration="7315000" />
+      <workItem from="1685539452133" duration="764000" />
+      <workItem from="1685584273738" duration="5081000" />
+      <workItem from="1685654465578" duration="2666000" />
+      <workItem from="1685744157925" duration="8460000" />
+      <workItem from="1685759394176" duration="3569000" />
     </task>
     <task id="LOCAL-00001" summary="version 2023.2-21">
       <created>1684191098545</created>
@@ -318,7 +322,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684191098545</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="version 2023.2-21">
+      <created>1685144166715</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1685144166715</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,8 +351,9 @@
     <option name="LAST_COMMIT_MESSAGE" value="version 2023.2-21" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ProyectoFinalArteaga$simpleexample.coverage" NAME="simpleexample Coverage Results" MODIFIED="1684707695120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/home/dash_apps/finished_apps" />
+    <SUITE FILE_PATH="coverage/ProyectoFinalArteaga$simpleexample.coverage" NAME="simpleexample Coverage Results" MODIFIED="1685147434477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/home/dash_apps/finished_apps" />
     <SUITE FILE_PATH="coverage/ProyectoFinalArteaga$ModeloPredictivoVENADO.coverage" NAME="ModeloPredictivoVENADO Coverage Results" MODIFIED="1684292979479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/home/dash_apps/finished_apps" />
     <SUITE FILE_PATH="coverage/ProyectoFinalArteaga$generar_graficaVenado.coverage" NAME="generar_graficaVenado Coverage Results" MODIFIED="1684701632893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ProyectoFinalArteaga$db_prueba.coverage" NAME="db_prueba Coverage Results" MODIFIED="1685586545736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

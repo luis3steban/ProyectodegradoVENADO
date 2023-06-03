@@ -91,8 +91,8 @@
             </tbody>
         </table>
 
-        <h2>Error de Predicción</h2>
-        <p>Error RMSE: {{ error }}</p>
+        <h2>Root Mean Squared Error de Predicción</h2>
+        <p>RMSE: {{ error }}</p>
 
         <h2>Producción Adecuada</h2>
         <p>Producción adecuada para el período seleccionado: {{ produccion_adecuada }}</p>
@@ -106,9 +106,5 @@
         {% endif %}
     {% endif %}
     </div>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" name="descargar_pdf">Descargar Reporte PDF</button>
-    </form>
 </body>
 </html>

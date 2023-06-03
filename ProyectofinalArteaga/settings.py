@@ -74,25 +74,19 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ProyectofinalArteaga.wsgi.application'
-
+AUTH_USER_MODEL = 'home.Usuarios'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-"""
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-"""
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'venadodash',
-        'USER': 'postgres',
-        'PASSWORD':'8399',
-        'HOST': 'localhost'
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'venadobdpredict',
+        'USER': 'root',
+        'PASSWORD': '8399243Leav_',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -143,7 +137,9 @@ STATICFILES_FINDERS = [
     'django_plotly_dash.finders.DashAssetFinder',
     'django_plotly_dash.finders.DashComponentFinder'
 ]
-
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 PLOTLY_COMPONENTS = [
     'dash_core_components',
     'dash_html_components',

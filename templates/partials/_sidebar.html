@@ -12,7 +12,6 @@
 
                 </div>
             </a>
-
             <!-- Divider -->
             <hr class="sidebar-divider my-0" style=background-color:white>
 
@@ -24,7 +23,7 @@
             <!-- Heading -->
 
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'form' %}" style=background-color:darkred>
+                <a class="nav-link" href="{% url 'dashboard' %}" style="background-color: darkred">
 
                     <span> Inicio</span></a>
             </li>
@@ -45,9 +44,9 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html" style=background-color:darkred>
-
-                    <span> Gestion Produccion </span></a>
+                <a class="nav-link {% if nombre_acceso == "Usuario marketing" %}disabled{% endif %}" href="charts.html" style="background-color: darkred">
+                    <span>Gestión Producción</span>
+                </a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider" style=background-color:white>
@@ -62,9 +61,9 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="register.html">Modulo usuarios</a>
-                        <a class="collapse-item" href="register.html">Reporte produccion</a>
-                        <a class="collapse-item" href="forgot-password.html">Reporte distribucion</a>
+                        <a class="collapse-item" href="{% url 'Usuarios' %}">Modulo usuarios</a>
+                        <a class="collapse-item" href="{% url 'reporteproduccion' %}">Reporte produccion</a>
+                        <a class="collapse-item" href="{% url 'reportedistribucion' %}">Reporte distribucion</a>
                         <a class="collapse-item" href="forgot-password.html">Historial prediccion</a>
                         <div class="collapse-divider"></div>
                     </div>
