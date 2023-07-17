@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.hashers import check_password
+
 class Accesos(models.Model):
         id = models.AutoField(primary_key=True)
         acceso_predict = models.CharField(max_length=20)
@@ -117,3 +118,21 @@ class Usuarios(AbstractBaseUser):
 
     class Meta:
         db_table = 'usuarios'
+class AuditoriaPredicciones(models.Model):
+    id = models.AutoField(primary_key=True)
+    usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE)
+    nomproducto = models.CharField(max_length=255)
+    Fechaseleccionada = models.DateField()
+    fechaprediccion = models.DateField()
+    horaprediccion = models.TimeField()
+    cantprediccion = models.IntegerField()
+    modelo = models.CharField(max_length=255)
+    arL1 = models.FloatField()
+    maL1 = models.FloatField()
+    arSL2 = models.FloatField()
+    sigma2 = models.FloatField()
+    pdf = models.FileField(upload_to='pdfs/')
+    class Meta:
+        db_table = 'auditoria_predicciones'
+    def __str__(self):
+        return self.usuario

@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load plotly_dash %}
 {% load static %}
 
 {% block content %}
@@ -16,6 +15,7 @@
         display: none;
         margin-top: 10px;
         text-align: center;
+        color: #999999;
     }
     .custom-button {
         text-decoration: none !important;
@@ -25,53 +25,147 @@
         border: none !important;
         padding: 0 !important;
     }
-    .image-popup a {
-        text-decoration: none;
-        color: inherit;
-    }
     .custom-image {
         border: none !important;
         outline: none !important;
     }
-</style>
+    .container {
+        height: auto;
+        margin: 0 auto
+    }
 
-<div class="container">
+    .carousel-indicators li {
+        background-color: #808080; /* Color de fondo gris para los indicadores del carrusel */
+    }
+    .carousel-container {
+        background-color: #8B0000FF;
+        height: 560px;
+        margin: 0 auto
+    }
+
+</style>
+<div class="container" >
+        <div class="carousel-container" >
+<div id="myCarousel" class="carousel slide" data-ride="carousel"  >
+    <!-- Título del carrusel -->
     <div class="text-center">
-        <h2 class="text-gray-900" style="font-weight: 900; margin: 0; padding: 0; border: 0; outline: 0; font-size: 40px; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; vertical-align: baseline; background: transparent; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #375fa7!important;">
-            LÍNEA DE PRODUCTOS - SALSAS KRIS
+        <h2 class="text-gray-900" style="font-weight: 900; margin: 0; padding: 0; border: 0; outline: 0; font-size: 40px; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; vertical-align: baseline; background: transparent; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #033081FF!important;">
+            LÍNEA DE PRODUCTOS - MARCA KRIS
         </h2>
     </div>
-    <br>
-    <br>
-    <div class="d-flex justify-content-center">
-        <div class="p-2 image-popup">
-            <div class="image-popup">
+
+    <!-- Indicadores -->
+    <ol class="carousel-indicators" style="margin-top: 30px;">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <!-- Agrega más elementos "li" según la cantidad de imágenes -->
+    </ol>
+
+    <!-- Slides del carrusel -->
+    <div class="carousel-inner" style="height: 530px; " >
+        <div class="carousel-item active">
+            <div class="d-flex justify-content-center">
+                <div class="p-2 image-popup">
                     <button class="btn btn-link open-modal custom-button" data-toggle="modal" data-target="#productModalmostaza">
-                <img src="{% static 'img/krismostaza400g.png' %}" height="420" width="200" alt="Salsa kris mostaza 410gr" class="custom-image">
-                <div class="image-description">SALSA KRIS MOSTAZA 400gr </div>
+                        <img src="{% static 'img/krismostaza400g.png' %}" height="420" width="200" alt="Salsa kris mostaza 410gr" class="custom-image">
+                        <div class="image-description">SALSA KRIS MOSTAZA 400gr</div>
                     </button>
-            </div>
-        </div>
-            <div class="p-2 image-popup">
-                <div class="image-popup">
+                </div>
+                <div class="p-2 image-popup">
+                    <button class="btn btn-link open-modal custom-button" data-toggle="modal" data-target="#productModalmayonesa">
+                        <img src="{% static 'img/krismayonesalsa410g.png' %}" height="420" width="210" alt="Salsa kris mayonesa 380gr" class="custom-image">
+                        <div class="image-description">SALSA KRIS MAYONESA 380gr</div>
+                    </button>
+                </div>
+                <div class="p-2 image-popup">
                     <button class="btn btn-link open-modal custom-button" data-toggle="modal" data-target="#productModal">
                         <img src="{% static 'img/krisketchupsalsa410g.png' %}" height="420" width="220" alt="Salsa kris ketchup 410gr" class="custom-image">
                         <div class="image-description">SALSA KRIS KETCHUP 410gr</div>
                     </button>
                 </div>
             </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="d-flex justify-content-center">
+             <div class="p-2 image-popup">
+              <div class="image-popup">
+                <button class="btn btn-link custom-button" data-toggle="modal" data-target="#cerealModal">
+                  <img src="{% static 'img/cerealkriskaokris.png' %}" height="380" width="260" alt="Cereal Kriskao 400g" class="custom-image">
+                  <div class="image-description">KRIS CEREAL KRISKAO 400g</div>
+                </button>
+              </div>
+            </div>
+
+            <div class="p-2 image-popup">
+              <div class="image-popup">
+                <button class="btn btn-link custom-button" data-toggle="modal" data-target="#productModal">
+                  <img src="{% static 'img/cerealazucaraditaskris.png' %}" height="380" width="250" alt="Cereal Kris Azucaraditas 220gr" class="custom-image">
+                  <div class="image-description">KRIS CEREAL AZUCARADITAS 220gr</div>
+                </button>
+              </div>
+            </div>
         <div class="p-2 image-popup">
             <div class="image-popup">
             <button class="btn btn-link open-modal custom-button" data-toggle="modal" data-target="#productModalmayonesa">
-                <img src="{% static 'img/krismayonesalsa410g.png' %}" height="420" width="210" alt="Salsa kris mayonesa 380gr" class="custom-image">
-                <div class="image-description">SALSA KRIS MAYONESA 380gr</div>
+                <img src="{% static 'img/cerealesfrutaritoskris.png' %}" height="400" width="270" alt="Cereal Kris Azucaraditas 400g" class="custom-image">
+                <div class="image-description">KRIS CEREAL FRUTARITOS 400g</div>
             </button>
             </div>
         </div>
+        <div class="p-2 image-popup">
+            <div class="image-popup">
+            <button class="btn btn-link open-modal custom-button" data-toggle="modal" data-target="#productModalmayonesa">
+                <img src="{% static 'img/cerealAvenainstantanea.png' %}" height="380" width="230" alt="Cereal Avena Instantanea 400g" class="custom-image">
+                <div class="image-description">KRIS AVENA INSTANTANEA EN HOJUELAS 400g</div>
+            </button>
+            </div>
+        </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="d-flex justify-content-center">
+                <div class="p-2 image-popup">
+                    <div class="image-popup">
+                            <button class="btn btn-link open-modal custom-button" data-toggle="modal" data-target="#productModalmostaza">
+                        <img src="{% static 'img/LevaduraKRIS.png' %}" height="380" width="350" alt="Polvo para hornear 57g" class="custom-image">
+                        <div class="image-description">KRIS POLVO PARA HORNEAR 57g</div>
+                            </button>
+                    </div>
+                </div>
+                    <div class="p-2 image-popup">
+                        <div class="image-popup">
+                            <button class="btn btn-link open-modal custom-button" data-toggle="modal" data-target="#productModal">
+                                <img src="{% static 'img/gelatinasinsabor.png' %}" height="350" width="280" alt="Gelatina sin sabor 42gr " class="custom-image">
+                                <div class="image-description">KRIS GELATINA SIN SABOR 42g</div>
+                            </button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!-- Agrega más elementos "div" con clase "carousel-item" y las imágenes correspondientes -->
     </div>
-    <!-- Contenido de la ventana emergente -->
+
+    </div>
+                <br>
+<div class="d-flex justify-content-center">
+    <div class="button" style="position: absolute; left: 55%;  transform: translate(-50%, -50%); align-content: center; height: 55px; max-width: 300px; width: 50%; background: darkred; border-radius: 6px; cursor: pointer; box-shadow: 0 5px 10px rgba(239,236,236,0.2); overflow: hidden;">
+        <button type="submit" class="text" style="color: white; background: transparent; border: none; outline: none; cursor: pointer; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;" data-toggle="modal" data-target="#productModal">
+            Pronostico de produccion IA
+        </button>
+    </div>
 </div>
 
+    </div>
+    <!-- Controles de navegación -->
+
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const images = document.querySelectorAll('.image-popup');
@@ -86,7 +180,13 @@
             });
         });
     });
-</script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    // Configuración para que el carrusel se mueva automáticamente
+    $(document).ready(function() {
+        $('#myCarousel').carousel({
+            interval: 1500, // Cambia el valor según el tiempo deseado (en milisegundos)
+            ride: 'carousel' // Agrega esta línea para habilitar la rotación automática
+        });
+    });
+</script>
 {% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container" style="width: 100%; max-width: 1400px;">
+        <div class="overflow-auto">
+            <table id="historialTable" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Fecha prediccion</th>
+                        <th>Hora prediccion</th>
+                        <th>Nombre Producto</th>
+                        <th>Fecha seleccionada</th>
+                        <th>Cantidad de prediccion</th>
+                        <th>Pamatros de modelo</th>
+                        <th>AR</th>
+                        <th>MA</th>
+                        <th>ARL2</th>
+                        <th>Sigma2</th>
+                        <th>PDF</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for auditoria in auditorias %}
+                        <tr>
+                            <td>{{ auditoria.usuario.nombre_usuario }}</td>
+                            <td>{{ auditoria.fechaprediccion }}</td>
+                            <td>{{ auditoria.horaprediccion }}</td>
+                            <td>{{ auditoria.nomproducto }}</td>
+                            <td>{{ auditoria.Fechaseleccionada }}</td>
+                            <td>{{ auditoria.cantprediccion }}</td>
+                            <td>{{ auditoria.modelo }}</td>
+                            <td>{{ auditoria.arL1 }}</td>
+                            <td>{{ auditoria.maL1 }}</td>
+                            <td>{{ auditoria.arSL2 }}</td>
+                            <td>{{ auditoria.sigma2 }}</td>
+                            <td><a href="{% url 'descargar_pdf' auditoria.id %}" download>Descargar PDF</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <style>
+    .overflow-auto {
+        overflow-x: auto;
+    }
+    </style>
+
+    <!-- Scripts de DataTables y Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+{% endblock %}

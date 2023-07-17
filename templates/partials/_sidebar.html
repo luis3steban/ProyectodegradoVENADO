@@ -37,14 +37,16 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded" >
                         <h6 class="collapse-header">LINEA DE PRODUCTOS :</h6>
-                        <a class="collapse-item" href="{% url 'marcas' %}" >Salsas KRIS</a>
+                        <a class="collapse-item" href="{% url 'marcas' %}" >MARCA VENADO KRIS</a>
+                        <a class="collapse-item" href="{% url 'cerealeskris' %}" >OTRA MARCA VENADO</a>
+                        <a class="collapse-item" href="{% url 'panificacionkris' %}" >OTRA MARCA VENADO</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link {% if nombre_acceso == "Usuario marketing" %}disabled{% endif %}" href="charts.html" style="background-color: darkred">
+                <a class="nav-link {% if nombre_acceso == "Usuario marketing" %}disabled{% endif %}" href="{% url 'addReportes' %}" style="background-color: darkred">
                     <span>Gestión Producción</span>
                 </a>
             </li>
@@ -64,7 +66,7 @@
                         <a class="collapse-item" href="{% url 'Usuarios' %}">Modulo usuarios</a>
                         <a class="collapse-item" href="{% url 'reporteproduccion' %}">Reporte produccion</a>
                         <a class="collapse-item" href="{% url 'reportedistribucion' %}">Reporte distribucion</a>
-                        <a class="collapse-item" href="forgot-password.html">Historial prediccion</a>
+                        <a class="collapse-item" href="{% url 'reporteauditoria' %}">Historial prediccion</a>
                         <div class="collapse-divider"></div>
                     </div>
                 </div>

@@ -31,7 +31,7 @@ def update_graph(selected_product):
     filtered_data = produccionketchupvenado[produccionketchupvenado['nombre producto'] == selected_product]
 
     fig = px.line(filtered_data, x='Fecha mensual produccion', y=['cantidad producida', 'cantidad distribuida'],
-                  title=f'Comparación de Cantidad Producida y Distribuida - {selected_product}')
+                  title=f'Comparación de Cantidad Producida y Distribuida Marca KRIS')
     fig.update_layout(
         xaxis_title='Fecha',
         yaxis_title='Cantidad unidad producto'

@@ -14,10 +14,14 @@
 
     <title>Industrias Venado Predict - Dashboard</title>
     <!-- Incluir los estilos CSS de DataTables -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/style.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %} " rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -27,8 +31,19 @@
      <link rel="stylesheet" href="{% static 'vendor/fontawesome-free/css/style.css' %}">
     <link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/assets/owl.theme.default.min.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}">
 </head>
 
 <body id="page-top">
@@ -90,270 +105,209 @@
             </div>
         </div>
     </div>
+
 <!-- Modal ketchup -->
-<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS KETCHUP</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-lg-4 d-none d-lg-block">
-            <br>
-            <div class="image-container">
-              <img src="{% static 'img/krisketchupsalsa410g.png'%}" height="420" width="210">
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">GRAFICA COMPARATIVA - MARCA KRIS </h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-lg-4 d-none d-lg-block">
+                <br><br><br><br><br>
+                <div class="image-container">
+                  <img src="{% static 'img/logotipo principal kris.png'%}" height="280" width="210">
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="{% plotly_class name='SimpleExample' %} card">
+                            <div class="chart-container">
+                                {% plotly_app name='SimpleExample' ratio=0.66 %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <div class="hidden-content" style="display: none;">
+                  <form method="POST" action="{% url 'prediction' %}" >
+                    {% csrf_token %}
+                    <select id="selectproducto" name="nom_prod">
+                      <option value="" disabled selected>Seleccione un producto...</option>
+                      <option value="KRIS KETCHUP">KRIS KETCHUP</option>
+                      <option value="KRIS MAYONESA">KRIS MAYONESA</option>
+                      <option value="KRIS MOSTAZA">KRIS MOSTAZA</option>
+                      <option value="KRISKAO KRIS">KRISKAO KRIS</option>
+                      <option value="AZUCARADITAS KRIS">AZUCARADITAS KRIS</option>
+                      <option value="FRUTARITOS KRIS">FRUTARITOS KRIS</option>
+                      <option value="AVENA INSTANTANEA KRIS">AVENA INSTANTANEA KRIS</option>
+                      <option value="POLVO PARA HORNEAR KRIS">POLVO PARA HORNEAR KRIS</option>
+                      <option value="GELATINA SIN SABOR KRIS">GELATINA SIN SABOR KRIS</option>
+                    </select>
+                    <label for="fecha_pred">Selecciona mes de producción</label>
+                    <input class="col-lg-4" type="month" id="fecha_pred" name="fecha_pred">
+                    <br><br>
+                    <div class="row-cols-lg-4" >
+                        <div class="col-lg-8">
+                            <div class="matrix-simulation-container" >
+                                  <span class="default-content">Porfavor, Introduzca todos los campos para realizar la prediccion:</span>
+                            </div>
+                        </div>
+                        <br><br>
+                                   <div class="button" style="position: absolute; left: 20%; align-content: center; height: 55px; max-width: 300px; width: 50%; background: darkred; border-radius: 6px; cursor: pointer; box-shadow: 0 5px 10px rgba(239,236,236,0.2); overflow: hidden;">
+                                        <button type="submit" class="text" style="color: white; background: transparent; border: none; outline: none; cursor: pointer; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;" id="generatePredictionBtn" >
+                                            <i class="bx bx-cloud-upload"></i>
+                                            Generar predicción
+                                        </button>
+                                    </div>
+                    </div>
+                  </form>
+                  <br><br><br><br>
+                        <div class="hidden-content" style="display: none;">
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-lg-8">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="{% plotly_class name='SimpleExample' %} card">
-                  {% plotly_app name='SimpleExample' ratio=0.66 %}
-                </div>
-              </div>
-            </div>
-            <br><br>
-            <div class="hidden-content" style="display: none;">
-              <form method="POST" action="{% url 'prediction' %}">
-                {% csrf_token %}
-                <select id="selectproducto" name="nom_prod">
-                  <option value="" disabled selected>Seleccione un producto...</option>
-                  <option value="KRIS KETCHUP">KRIS KETCHUP</option>
-                  <option value="SALSAS MAYONESA">SALSAS MAYONESA</option>
-                  <option value="SALSA MOSTAZA">SALSA MOSTAZA</option>
-                </select>
-                <label for="fecha_pred">Selecciona mes de producción</label>
-                <input class="col-lg-4" type="month" id="fecha_pred" name="fecha_pred">
-                <br><br>
-                <div class="row-cols-lg-4">
-                               <div class="button" style="position: absolute; left: 20%; align-content: center; height: 55px; max-width: 300px; width: 50%; background: darkred; border-radius: 6px; cursor: pointer; box-shadow: 0 5px 10px rgba(239,236,236,0.2); overflow: hidden;">
-                                    <button type="submit" class="text" style="color: white; background: transparent; border: none; outline: none; cursor: pointer; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                        <i class="bx bx-cloud-upload"></i>
-                                        Generar predicción
-                                    </button>
-                                </div>
-                </div>
-              </form>
-              <br><br><br><br>
-              <div>
-                <label class="text-xs font-weight-bold text-info text-uppercase mb-1" id="cant" style="color: #1b1b1b ;font-size: 15px; position: absolute;left: 7%"> </label>
-              </div>
-            </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" type="button" style="background: darkred" id="moreOptionsBtn">Más opciones</button>
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" type="button" id="moreOptionsBtn">Más opciones</button>
-      </div>
     </div>
-  </div>
-</div>
-
+     <!-- Modal mayonesa -->
+     <!-- Modal mostaza -->
 <style>
+    .matrix-simulation-container {
+      background-color: black;
+      color: #7FFF00;
+      font-family: "Courier New", monospace;
+      width: 150%; /* Asignar un ancho del 100% */
+      height: 180px; /* Asignar una altura de 300px */
+      overflow-y: scroll;
+    }
     .image-container {
         margin-left: 2cm;
     }
+    .chart-container {
+    position: relative;
+    padding-bottom: 66%;
+    height: 0;
+    overflow: hidden;
+}
+
+.chart-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+    .image-container {
+        margin-left: 2cm;
+    }
+    .chart-container {
+    position: relative;
+    padding-bottom: 66%;
+    height: 0;
+    overflow: hidden;
+}
+
+.chart-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 </style>
-
-
-
-     <!-- Modal mayonesa -->
-
- <div class="modal fade" id="productModalmayonesa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS MAYONESA</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-lg-4 d-none d-lg-block">
-                        <br>
-                        <div class="image-container">
-                            <img src="{% static 'img/krismayonesalsa410g.png'%}" height="420" width="210">
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="{% plotly_class name='SimpleExample2' %} card">
-                                    {% plotly_app name='SimpleExample2' ratio=0.66 %}
-                                </div>
-                            </div>
-                        </div>
-                        <br><br>
-                        <div class="hidden-content" style="display: none;">
-                            <select id="selectproducto" name="select">
-                                <option value="select" disabled selected>Seleccione un producto...</option>
-                                <option value="SALSAS KETCHUP">SALSAS KETCHUP</option>
-                                <option value="SALSAS MAYONESA">SALSAS MAYONESA</option>
-                                <option value="SALSA MOSTAZA">SALSA MOSTAZA</option>
-                            </select>
-                            <label for="">Selecciona mes de producción</label>
-                            <input class="col-lg-4" type="month">
-                            <br><br>
-                            <div class="row-cols-lg-4">
-                             <form method="POST" action="{% url 'prediction' %}">
-                                {% csrf_token %}
-                                <div class="button" style="position: absolute; left: 20%; align-content: center; height: 55px; max-width: 300px; width: 50%; background: darkred; border-radius: 6px; cursor: pointer; box-shadow: 0 5px 10px rgba(239,236,236,0.2); overflow: hidden;">
-                                    <button type="submit" class="text" style="color: white; background: transparent; border: none; outline: none; cursor: pointer; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                        <i class="bx bx-cloud-upload"></i>
-                                        Generar predicción
-                                    </button>
-                                </div>
-                            </form>
-                                <br><br><br><br>
-                                <div>
-                                    <label class="text-xs font-weight-bold text-info text-uppercase mb-1" id="cant" style="color: #1b1b1b ;font-size: 15px; position: absolute;left: 7%"> </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="button" id="moreOptionsBtn">Más opciones</button>
-            </div>
-        </div>
-    </div>
-</div>
-     <!-- Modal mostaza -->
-
- <div class="modal fade" id="productModalmostaza" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">PRODUCTOS KRIS - SALSAS MOSTAZAq</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-lg-4 d-none d-lg-block">
-                        <br>
-                        <div class="image-container">
-                            <img src="{% static 'img/krismostaza400g.png'%}" height="420" width="210">
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="{% plotly_class name='SimpleExample' %} card">
-                                    {% plotly_app name='SimpleExample' ratio=0.66 %}
-                                </div>
-                            </div>
-                        </div>
-                        <br><br>
-                        <div class="hidden-content" style="display: none;">
-                                <form id="prediction-form">
-                                  <div class="hidden-content" style="display: none;">
-                                    <select id="selectproducto" name="nom_prod">
-                                      <option value="" disabled selected>Seleccione un producto...</option>
-                                      <option value="SALSAS KETCHUP">SALSAS KETCHUP</option>
-                                      <option value="SALSAS MAYONESA">SALSAS MAYONESA</option>
-                                      <option value="SALSA MOSTAZA">SALSA MOSTAZA</option>
-                                    </select>
-                                    <label for="fecha_pred">Selecciona mes de producción</label>
-                                    <input class="col-lg-4" type="month" id="fecha_pred" name="fecha_pred">
-                                    <br><br>
-                                    <div class="row-cols-lg-4">
-                                      <button type="button" onclick="submitForm()">Generar predicción</button>
-                                    </div>
-                                  </div>
-                                </form>
-                        </div>
-                    </div>
-                </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="button" id="moreOptionsBtn">Más opciones</button>
-            </div>
-        </div>
-    </div>
-</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    // Obtener referencias a los elementos del DOM
-    const selectProducto = document.getElementById("selectproducto");
-    const inputMesProduccion = document.querySelector("input[type='month']");
-    const resultadoLabel = document.getElementById("resultado");
+  $(document).ready(function() {
+    // Obtener el token CSRF
+    function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = jQuery.trim(cookies[i]);
+          // Buscar el nombre de la cookie
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
 
-    // Escuchar el evento de envío del formulario
-    document.querySelector("form").addEventListener("{% url 'prediction' %}", function(event) {
-        event.preventDefault(); // Evitar el envío del formulario por defecto
-
-        // Obtener los valores seleccionados
-        const productoSeleccionado = selectProducto.value;
-        const mesProduccionSeleccionado = inputMesProduccion.value;
-
-        // Mostrar los valores seleccionados en el label
-        resultadoLabel.textContent = `Producto seleccionado: ${productoSeleccionado}, Mes de producción seleccionado: ${mesProduccionSeleccionado}`;
-
-        // Continuar con el envío del formulario si es necesario
-        this.submit();
+    // Configurar el token CSRF para todas las solicitudes AJAX
+    $.ajaxSetup({
+      beforeSend: function(xhr, settings) {
+        xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
+      }
     });
+
+    // Escuchar el evento del botón y hacer la solicitud AJAX
+    $('#generatePredictionBtn').click(function() {
+      $.ajax({
+        url: '/prediction/', // La URL de la vista 'modelo_prediccion'
+        type: 'POST',
+        dataType: 'json',
+        success: function(response_data) {
+          console.log(response_data); // Imprimir los datos en la consola
+          // Actualizar el contenido del <label> con los datos recibidos
+        var produccion_adecuada = response_data.produccion_adecuada !== null ? response_data.produccion_adecuada : "Porfavor , visualize los resultados"; // Verificar si produccion_adecuada no es null
+        // Actualizar el contenido del <label> con los datos recibidos
+        $('#produccion-label').text('Cantidad de producción adecuada: ' );
+        },
+        error: function(xhr, status, error) {
+          // Manejar el error de la solicitud AJAX
+          console.log(error);
+        }
+      });
+    });
+  });
 </script>
-         <!-- Modal prediccion -->
-        <div class="modal fade" id="prediccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content modal-xl">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">GENERAR PREDICCION DE PRODUCCION</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="row" style="height: 310px">
-                    <div class="col-lg-4 d-none d-lg-block " > <img id="img" style="position: absolute;left: 10%" src="{% static 'img/logotipo principal kris.png'%}" height="310" width="330"></div>
-                    <div class="col-lg-8 d-none d-lg-block" style=" align-content: flex-end;width: 300% ; height: 100%">
-                        <br><br><div >  <select id="selectproducto" name="select" >
-  <option value="select" disabled selected>Seleccione un producto...</option>
-  <option value="SALSAS KETCHUP">SALSAS KETCHUP</option>
-  <option value="AVENA INSTANTANEA">AVENA INSTANTANEA</option>
-  <option value="CEREALES AZUCARADITAS">CEREALES AZUCARADITAS</option>
-  <option value="GELATINA SIN SABOR">GELATINA SIN SABOR</option>
-   <option value="DURAZNOS ENLATADOS">DURAZNOS ENLATADOS</option>
-  <option value="SALSAS MAYONESA">SALSAS MAYONESA</option>
-  <option value="POLVO DE HORNEAR">POLVO DE HORNEAR</option>
+     <script>
+         const simulationContainer = document.querySelector('.matrix-simulation-container');
+         const defaultContent = document.querySelector('.default-content');
+        document.getElementById('generatePredictionBtn').addEventListener('click', function() {
+          simulationContainer.style.display = 'block';
+          defaultContent.style.display = 'Porfavor, Introduzca todos los campos para realizar la prediccion:';
+          simulationContainer.innerHTML = '';
+        const simulationLines = [
+          'Inicializando algoritmo de predicción SARIMAX....Completado!',
+          'Cargando datos....Completado!',
+          'Procesando datos....Completado!',
+          'Ejecutando proceso de entrenamiento modelo de prediccion....Cargando',
+          'Optimizando parámetros....Completado!',
+          'Refinando modelo....Completado!',
+          'Calculando métricas de rendimiento....Completado!',
+          'Generando predicción...',
+          '¡Predicción completada exitosamente!',
+          'Obteniendo resultados y generando reporte...',
+          'Descargando reporte de resultados....',
+          'Dirigete al reporte descargado para visualizar los resultados...'
+        ];
 
-</select>
-                        <label for="">Selecciona mes de produccion</label>
-  <input class="col-lg-4" type="month" >
-                        <br><br>
-                        <div class="row-cols-lg-4">
-
-                            <br><br><br><br>
-        <div>
-              <label class="text-xs font-weight-bold text-info text-uppercase mb-1" id="cant" style="color: #1b1b1b ;font-size: 15px; position: absolute;left: 7% " > </label>
-        </div>
-    <script>
-        // Obtener referencias a los elementos del DOM
-        const selectProducto = document.getElementById("selectproducto");
-        const inputMesProduccion = document.getElementById("mesProduccion");
-        const resultado = document.getElementById("resultado");
-
-        // Escuchar el evento de envío del formulario
-        document.querySelector("form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Evitar el envío del formulario por defecto
-
-            // Obtener los valores seleccionados
-            const productoSeleccionado = selectProducto.value;
-            const mesProduccionSeleccionado = inputMesProduccion.value;
-
-            // Mostrar los valores seleccionados en la página
-            resultado.innerHTML = `Producto seleccionado: ${productoSeleccionado}, Mes de producción seleccionado: ${mesProduccionSeleccionado}`;
-
-            // Continuar con el envío del formulario si es necesario
-            this.submit();
+          simulateMatrix(simulationLines);
         });
-    </script>
+
+        function simulateMatrix(lines) {
+          lines.forEach((line, index) => {
+            setTimeout(() => {
+              simulationContainer.innerHTML += line + '<br>';
+              simulationContainer.scrollTop = simulationContainer.scrollHeight;
+            }, index * 2650);
+          });
+        }
+     </script>
   <script>
     const button = document.querySelector(".button"),
     text = document.querySelector(".text");
@@ -363,7 +317,7 @@
 
       setTimeout(()=>{
        button.classList.remove("progress"); //remove progress after 6s
-       text.innerText = "Prediccion finalizada";
+       text.innerText = "Generar predicción";
                var cant1 =0
         const selectElement = document.querySelector('#selectproducto');
         const seleccionado = selectElement.options[selectElement.selectedIndex].value;
@@ -415,15 +369,6 @@
             });
         </script>
 
-	</div>
-       </div></div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" data-dismiss="modal" style="background: darkred">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
             <!-- Bootstrap core JavaScript-->
             <script src=" {% static 'vendor/jquery/jquery.min.js' %}"></script>
             <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -441,6 +386,13 @@
             <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
             <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
                 <!-- Incluir los scripts JavaScript de DataTables -->
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+              <script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/owl.carousel.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
 
@@ -478,6 +430,37 @@
         <script>
         $(document).ready(function() {
             $('#distribucionTable').DataTable({
+                // Configuración de DataTables
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }
+            });
+        });
+    </script>
+             <script>
+        $(document).ready(function() {
+            $('#historialTable').DataTable({
                 // Configuración de DataTables
                 "language": {
                     "sProcessing": "Procesando...",

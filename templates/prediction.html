@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,18 +7,27 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 20px auto;
+            max-width: 800px;
         }
 
         h1 {
             color: #333;
             text-align: center;
             margin-bottom: 30px;
+            font-size: 24px;
+        }
+        h5 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 12px;
         }
 
-        h2 {
+        h3 {
             color: #555;
             margin-top: 30px;
+            font-size: 18px;
         }
 
         p {
@@ -28,6 +38,8 @@
             border-collapse: collapse;
             width: 100%;
             margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         th, td {
@@ -35,7 +47,10 @@
             padding: 8px;
             text-align: left;
         }
-
+        .table-container {
+            margin-top: 20px;
+            text-align: center;
+        }
         th {
             background-color: #f2f2f2;
         }
@@ -44,67 +59,110 @@
             max-width: 100%;
             margin-top: 20px;
         }
-
-        .download-button {
-            display: block;
-            width: 150px;
-            padding: 10px;
-            margin: 30px auto;
+        .summary-container {
             text-align: center;
-            background-color: #4CAF50;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.3s;
         }
 
-        .download-button:hover {
-            background-color: #45a049;
+        .summary-content {
+            display: inline-block;
+            text-align: left;
         }
+        .image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    .result-box {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+        text-align: justify;
+    }
+    .result-content {
+      text-align: justify;
+    }
+    .result-content p {
+        margin-bottom: 10px;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .result-date {
+        font-weight: bold;
+        color: #555;
+    }
+    .model-explanation {
+      font-size: 8px;
+    }
+    .result-value {
+        font-weight: bold;
+        color: #ff6600;
+    }
+
+    .recommendations-heading {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .recommendations {
+      list-style-type: disc;
+      font-size: 16px;
+      margin-left: 20px;
+    }
+
+    .recommendations li {
+      margin-bottom: 15px;
+    }
     </style>
 </head>
 <body>
     <div id="content">
-    <h1>Resultados de Predicción</h1>
+        <div class="image-container">
+        </div>
+        <h1>Resultados de Predicción</h1>
+              <img src="data:image/png;base64,{{ tendencia_img }}" alt="Tendencias" class="center-image">
+                    <div class="result-box">
+                        <div class="result-content">
+                            <p>Para el periodo seleccionado <span class="result-date">{{ fecha_usuario_pred }}</span>, el modelo SARIMAX estima una producción/stock adecuada de <span class="result-value">{{ produccion_adecuada }} unidades</span>.</p>
+                            <p class="model-explanation">Esta estimación se basa en un análisis detallado de datos históricos, patrones estacionales y tendencias identificadas. Se recomienda utilizar esta cifra como una guía estratégica en la planificación de la producción y la gestión del inventario. Es importante evaluar periódicamente los resultados y ajustar las estrategias según sea necesario para lograr una gestión eficiente y rentable de la cadena de suministro.</p>
+                        </div>
+                    </div>
 
-    {% if error_message %}
-        <p>{{ error_message }}</p>
-    {% else %}
-        <h2>Resumen del mejor modelo</h2>
-        <pre>{{ summary }}</pre>
-
-        <h2>Predicciones</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Fecha</th>
-                    <th>Predicción</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for fecha, prediccion in predicciones %}
-                    <tr>
-                        <td>{{ fecha }}</td>
-                        <td>{{ prediccion }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
-        <h2>Root Mean Squared Error de Predicción</h2>
-        <p>RMSE: {{ error }}</p>
-
-        <h2>Producción Adecuada</h2>
-        <p>Producción adecuada para el período seleccionado: {{ produccion_adecuada }}</p>
-
-        <h2>Nombre del Producto</h2>
-        <p>{{ nombre_producto }}</p>
-
-        <h2>Gráfico de Predicciones</h2>
-        {% if grafica_encoded %}
-            <img src="data:image/png;base64,{{ grafica_encoded }}" alt="Gráfica de predicciones">
-        {% endif %}
-    {% endif %}
+                    <p class="recommendations-heading">Recomendaciones:</p>
+                    <ul class="recommendations">
+                        <li>Se recomienda no superar la producción del producto por encima de la cantidad estimada para asegurar un equilibrio entre la oferta y la demanda.</li>
+                        <li>Si hay stock remanente del mes anterior, se recomienda ajustar la producción actual de acuerdo con la cantidad estimada para evitar acumulaciones innecesarias o escasez en el inventario.</li>
+                        <li>Evaluar la capacidad de distribución y demanda para garantizar la disponibilidad del producto.</li>
+                        <li>Monitorear regularmente los indicadores de producción y ajustar según sea necesario.</li>
+                    </ul>
+            <h1>SARIMAX Resultados </h1>
+            <div class="summary-container">
+                <pre class="summary-content">{{ summary }}</pre>
+            </div>
+            <h2>PREDICCIONES CORRELATIVAS - {{ nombre_producto }}</h2>
+            {% if grafica_encoded %}
+                <img src="data:image/png;base64,{{ grafica_encoded }}" alt="Gráfica de predicciones">
+            {% endif %}
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha Mensual Prediccion</th>
+                            <th>Predicción / unidades</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for fecha, prediccion in predicciones %}
+                            <tr>
+                                <td>{{ fecha }}</td>
+                                <td>{{ prediccion|floatformat:0 }} unidades</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
     </div>
 </body>
 </html>

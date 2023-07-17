@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg my-5 ajuste-tarjeta">
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="text-center">
+                                    <img id="producto-img" class="producto-imagen" src="{% static 'img/logotipo principal.png' %}" alt="Imagen del producto">
+                                </div>
+                            </div>3
+                            <div class="col-lg-6 d-flex align-items-center">
+                                <div class="p-5">
+                                    <h1 class="h4 text-gray-900 mb-4">Agregar Datos de Producción y Distribución</h1>
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="{{ form.producto.id_for_label }}">* Producto:</label>
+                                            {{ form.producto }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="{{ form.fecha_mensual.id_for_label }}">* Fecha mensual:</label>
+                                            {{ form.fecha_mensual }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="{{ form.cantidad_produccion.id_for_label }}">* Cantidad de producción:</label>
+                                            {{ form.cantidad_produccion }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="{{ form.canal_horizontal.id_for_label }}">Canal horizontal:</label>
+                                            {{ form.canal_horizontal }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="{{ form.canal_tradicional.id_for_label }}">Canal tradicional:</label>
+                                            {{ form.canal_tradicional }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="{{ form.canal_moderno.id_for_label }}">Canal moderno:</label>
+                                            {{ form.canal_moderno }}
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .producto-imagen {
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .card {
+            border-radius: 0;
+        }
+        .ajuste-tarjeta .producto-imagen {
+  max-width: 140%;
+  max-height: 500px; /* Ajusta este valor según tus necesidades */
+  height: auto;
+}
+    </style>
+
+    <script>
+        // Obtenemos el elemento <img> y el elemento de selección de producto
+        const productoImg = document.getElementById('producto-img');
+        const productoSelect = document.getElementById('{{ form.producto.auto_id }}');
+
+        // Escuchamos el evento de cambio en el campo de selección de producto
+        productoSelect.addEventListener('change', function () {
+            // Obtenemos el valor del producto seleccionado
+            const selectedProduct = this.value;
+
+            // Construimos la ruta de la imagen correspondiente
+            const imgSrc = '/static/img/' + selectedProduct.toLowerCase().replace(/ /g, '_') + '.png';
+
+            // Cambiamos el atributo "src" de la imagen
+            productoImg.src = imgSrc;
+        });
+    </script>
+{% endblock %}

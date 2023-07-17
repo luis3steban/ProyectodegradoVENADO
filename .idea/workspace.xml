@@ -5,16 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7bb119cb-4651-461e-a771-5f2e6a78060d" name="Changes" comment="version 2023.2-21">
-      <change afterPath="$PROJECT_DIR$/home/templates/home/password_reset.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/templates/home/password_reset_email_sent.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/templates/home/password_reset_invalid.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/home/templates/home/password_reset_success.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/KRIS KETCHUP.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/KRIS MAYONESA.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/KRIS MOSTAZA.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/LevaduraKRIS.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/cerealAvenainstantanea.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/cerealazucaraditaskris.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/cerealesfrutaritoskris.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/cerealkriskaokris.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProyectofinalArteaga/static/img/gelatinasinsabor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/AgregarReportesForm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/templates/home/AddReporteMensual.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/templates/home/LineaCerealesKris.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/templates/home/LineaPanificacionKris.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/templates/home/reportehistorialpredicciones.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/home/templates/logotipoprincipal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/img_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/img_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/logotipo principal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/modals.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProyectofinalArteaga/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectofinalArteaga/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/dash_apps/finished_apps/simpleexample.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/dash_apps/finished_apps/simpleexample.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/templates/home/forgot-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/home/forgot-password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/home/Marcas.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/home/Marcas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/partials/_sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/_sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/prediction.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/prediction.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +102,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/usuario/Desktop/ProyectoFinalArteaga&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/usuario/Desktop/ProyectoFinalArteaga/ProyectofinalArteaga/static/img&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -79,18 +114,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\usuario\Desktop\ProyectoFinalArteaga" />
-      <recent name="C:\Users\usuario\Desktop\ProyectoFinalArteaga\home\templates" />
+      <recent name="C:\Users\usuario\Desktop\ProyectoFinalArteaga\ProyectofinalArteaga\static\img" />
       <recent name="C:\Users\usuario\Desktop\ProyectoFinalArteaga\static\img" />
-      <recent name="C:\Users\usuario\Desktop\ProyectoFinalArteaga\home\templates\home" />
       <recent name="C:\Users\usuario\Desktop\ProyectoFinalArteaga\home" />
+      <recent name="C:\Users\usuario\Desktop\ProyectoFinalArteaga\templates" />
+      <recent name="C:\Users\usuario\Desktop\ProyectoFinalArteaga\home\templates\home" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\usuario\Desktop\ProyectoFinalArteaga\home\templates" />
+      <recent name="C:\Users\usuario\Desktop\ProyectoFinalArteaga\ProyectofinalArteaga\static\img" />
       <recent name="C:\Users\usuario\Desktop\ProyectoFinalArteaga\ProyectofinalArteaga\static" />
       <recent name="C:\Users\usuario\Desktop\ProyectoFinalArteaga\home" />
-      <recent name="C:\Users\usuario\Desktop\ProyectoFinalArteaga\home\templates" />
       <recent name="C:\Users\usuario\Desktop\ProyectoFinalArteaga\home\dash_apps\finished_apps" />
-      <recent name="C:\Users\usuario\Desktop\ProyectoFinalArteaga\static\js" />
     </key>
   </component>
   <component name="RunManager" selected="Python.db_prueba">
@@ -207,7 +242,6 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Django Server.ProyectoFinalArteaga" />
       <item itemvalue="Python.db_prueba" />
       <item itemvalue="Python.generar_graficaVenado" />
       <item itemvalue="Python.simpleexample" />
@@ -307,7 +341,32 @@
       <workItem from="1685654465578" duration="2666000" />
       <workItem from="1685744157925" duration="8460000" />
       <workItem from="1685759394176" duration="6083000" />
-      <workItem from="1685796312411" duration="14067000" />
+      <workItem from="1685796312411" duration="15305000" />
+      <workItem from="1685823745789" duration="2834000" />
+      <workItem from="1685827457960" duration="11490000" />
+      <workItem from="1685893443010" duration="10000" />
+      <workItem from="1685927666010" duration="4992000" />
+      <workItem from="1685940617689" duration="144000" />
+      <workItem from="1685941322788" duration="1279000" />
+      <workItem from="1686011357287" duration="713000" />
+      <workItem from="1686146876731" duration="859000" />
+      <workItem from="1686175735892" duration="11236000" />
+      <workItem from="1686236922485" duration="20582000" />
+      <workItem from="1686277059525" duration="12017000" />
+      <workItem from="1686314535141" duration="6885000" />
+      <workItem from="1686327962197" duration="2560000" />
+      <workItem from="1686333332632" duration="306000" />
+      <workItem from="1686527221815" duration="185000" />
+      <workItem from="1686913546698" duration="522000" />
+      <workItem from="1687010658649" duration="4142000" />
+      <workItem from="1687032607721" duration="23915000" />
+      <workItem from="1687103290929" duration="35480000" />
+      <workItem from="1687220855991" duration="8480000" />
+      <workItem from="1687236241563" duration="27055000" />
+      <workItem from="1687402001685" duration="1362000" />
+      <workItem from="1687541637226" duration="66000" />
+      <workItem from="1687541812587" duration="1105000" />
+      <workItem from="1687632714709" duration="25000" />
     </task>
     <task id="LOCAL-00001" summary="version 2023.2-21">
       <created>1684191098545</created>
@@ -330,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685763347925</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="version 2023.2-21">
+      <created>1685817490238</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1685817490238</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

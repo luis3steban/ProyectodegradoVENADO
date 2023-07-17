@@ -7,6 +7,10 @@ urlpatterns = [
     path('marcas&productos/', views.prediccion, name='prediccion'),
     path('contraseñaOlvidada?/', views.contraseñaolvidada, name='contraolvidada'),
     path('MarcasVenado/', views.marcas, name='marcas'),
+    path('CerealesKris/', views.LineaCereales, name='cerealeskris'),
+    path('pdf/', views.pdf, name='pdf'),
+    path('PanificacionKris/', views.LineaPanificacion, name='panificacionkris'),
+    path('ReporteHistorialPredicciones/', views.reporteHistorial, name='reporteauditoria'),
     path('ReporteVenadoProduccion/', views.reporteProduccion, name='reporteproduccion'),
     path('ReporteVenadoDistribucion/', views.reporteDistribucion, name='reportedistribucion'),
     path('prediction/', views.modelo_prediccion, name='prediction'),
@@ -22,6 +26,8 @@ urlpatterns = [
     path('agregar-acceso/', views.agregar_acceso, name='agregar_acceso'),
     path('modificar-acceso/', views.modificar_acceso, name='modificar_acceso'),
     path('eliminar-acceso/', views.eliminar_acceso, name='eliminar_acceso'),
+    path('descargar_pdf/<int:id>/', views.descargar_pdf, name='descargar_pdf'),
+    path('Add-reportes/', views.addReportesMensuales, name='addReportes'),
 ]
 
 
