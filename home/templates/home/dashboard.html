@@ -12,8 +12,42 @@
     <meta name="author" content="">
 
     <title>Industrias Venado Predict - Dashboard</title>
+    <script type="text/javascript">
+    function autoLogin() {
+        console.log('autoLogin function called');
+
+        // Encuentra el iframe
+        var iframe = document.getElementById('powerbi-iframe');
+        console.log('iframe:', iframe);
+
+        // Asegúrate de que el iframe ha cargado
+        iframe.onload = function() {
+            console.log('iframe loaded');
+
+            // Espera un breve momento para asegurar que el contenido del iframe se haya cargado completamente
+            setTimeout(function() {
+                // Intenta encontrar el botón de iniciar sesión dentro del iframe
+                var loginButton = iframe.contentDocument.querySelector('button[title="Iniciar sesión"]');
+                console.log('loginButton:', loginButton);
+
+                if (loginButton) {
+                    console.log('loginButton found, clicking');
+                    // Simula un clic en el botón de iniciar sesión
+                    loginButton.click();
+                } else {
+                    console.error('No se encontró el botón de iniciar sesión.');
+                }
+            }, 2000); // Espera 2 segundos después de que el iframe se haya cargado
+        };
+    }
+
+    // Ejecuta la función autoLogin cuando la página se haya cargado
+    window.onload = autoLogin;
+</script>
+
+    
     <!-- Custom fonts for this template-->
-    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %} " rel="stylesheet" type="text/css">
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -23,36 +57,33 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
+<body>
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
-<!-- Page Wrapper -->
-<div id="wrapper">
+        <!-- Sidebar -->
+        {% include 'partials/_sidebar.html' %}
+        <!-- End of Sidebar -->
 
-    <!-- Sidebar -->
-    {%  include 'partials/_sidebar.html' %}
-    <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
 
-        <!-- Main Content -->
-        <div id="content">
+                <!-- Topbar -->
+                {% include 'partials/_topbar.html' %}
+                <!-- End of Topbar -->
 
-            <!-- Topbar -->
-            {%  include 'partials/_topbar.html' %}
-            <!-- End of Topbar -->
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
 
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
+                    <div class="row">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
 
-                <div class="row">
-                    {% block content %}
-                    {% endblock %}
-
-
-                </div>
-
-                <!-- End of Main Content -->
-            <!-- Content Row -->
+                    <!-- Content Row -->
                     <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
@@ -63,11 +94,12 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Produccion (Mensual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">C/ 198,520
-                                            <img  src="{% static "img/krismayonesalsa410g.png" %}" height="120" width="60"></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                C/ {{ resultado_max_produccion.1 }}
+                                                <img src="{% static 'img/' %}{{ resultado_max_produccion.0 }}.png" height="120" width="90">
+                                            </div>
                                         </div>
                                         <div class="col-auto">
-
                                         </div>
                                     </div>
                                 </div>
@@ -82,11 +114,12 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Produccion (Anual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">  C/ 326,400
-                                            <img src="{%static "img/krisketchupsalsa410g.png"%}" height="120" width="60"></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                C/ {{ resultado_max_produccion_anio.1 }}
+                                                <img src="{% static 'img/' %}{{ resultado_max_produccion_anio.0 }}.png" height="120" width="60">
+                                            </div>
                                         </div>
                                         <div class="col-auto">
-
                                         </div>
                                     </div>
                                 </div>
@@ -99,24 +132,23 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Disminucion de Produccion
-
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                Disminucion de Produccion
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">9%</div>
-
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                        {{ resutaldo_disminucion_produccion.1 }}%
+                                                    </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
                                                         <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 19%" aria-valuenow="50" aria-valuemin="0"
+                                                            style="width: {{ resutaldo_disminucion_produccion.1 }}%" aria-valuenow="50" aria-valuemin="0"
                                                             aria-valuemax="100"></div>
-
                                                     </div>
-
                                                 </div>
-                                                       <img src="{% static "img/krismostaza400g.png"%}" height="120" width="60">
+                                                <img src="{% static 'img/' %}{{ resutaldo_disminucion_produccion.0 }}.png" height="120" width="60">
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -133,26 +165,25 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Crecimiento de Produccion</div>
-                                                                       <div class="row no-gutters align-items-center">
+                                                Crecimiento de Produccion
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">36%</div>
-
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                        {{ resutaldo_porcetaje_incremento.1 }}%
+                                                    </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
                                                         <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 46%" aria-valuenow="50" aria-valuemin="0"
+                                                            style="width: {{ resutaldo_porcetaje_incremento.1 }}%" aria-valuenow="50" aria-valuemin="0"
                                                             aria-valuemax="100"></div>
-
                                                     </div>
-
                                                 </div>
-                                                       <img  style="margin-left: 2cm;" src="{% static "img/krismayonesalsa410g.png"%}" height="120" width="60">
+                                                <img src="{% static 'img/' %}{{ resutaldo_porcetaje_incremento.0 }}.png" height="120" width="60">
                                             </div>
                                         </div>
                                         <div class="col-auto">
-
                                         </div>
                                     </div>
                                 </div>
@@ -161,187 +192,20 @@
                     </div>
 
                     <!-- Content Row -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">DASHBOARD & GRAFICOS - SALSAS KRIS
-                        <div> </div>
-
-                    </h1>
-                </div>
-            <div class = "d-sm-flex align-items-center justify-content-between mb-4">
-                <iframe title="DASHBOARD & GRAFICOS - SALSAS KRIS " width="1650" height="695.025" src="https://app.powerbi.com/reportEmbed?reportId=0ad93c69-c9d3-4583-afe2-2a5769a2e5ac&autoAuth=true&ctid=77cab36c-76b2-48c3-9c54-cb9e4ee09b72" frameborder="0" allowFullScreen="true"></iframe>
-            </div>
-        <script>
-            /**
-             * Clase para generar graficos de pastel
-             * Tiene que recibir:
-             *	el id del canvas
-             *	la anchura y altura del canvas
-             *	un array con los valores a mostrar del tipo:
-             *		var valores={
-             *			"Access":	{valor:10,color:"blue"},
-             *			"PHP":		{valor:23,color:"red"},
-             *			"Python":	{valor:18,color:"green"},
-             *			".NET":		{valor:12,color:"Orange"},
-             *			"C++":		{valor:30,color:"Cyan"}
-             *		}
-             */
-            var miPastel=function(canvasId,width,height,valores) {
-                this.canvas=document.getElementById(canvasId);;
-                this.canvas.width=width;
-                this.canvas.height=height;
-                this.radio=Math.min(this.canvas.width/2,this.canvas.height/2)
-                this.context=this.canvas.getContext("2d");
-                this.valores=valores;
-                this.tamanoDonut=0;
-
-                /**
-                 * Dibuja un gráfico de pastel
-                 */
-                this.dibujar=function() {
-                    this.total=this.getTotal();
-                    var valor=0;
-                    var inicioAngulo=0;
-                    var angulo=0;
-
-                    // creamos los quesos del pastel
-                    for(var i in this.valores)
-                    {
-                        valor=valores[i]["valor"];
-                        color=valores[i]["color"];
-                        angulo=2*Math.PI*valor/this.total;
-
-                        this.context.fillStyle=color;
-                        this.context.beginPath();
-                        this.context.moveTo(this.canvas.width/2, this.canvas.height/2);
-                        this.context.arc(this.canvas.width/2, this.canvas.height/2, this.radio, inicioAngulo, (inicioAngulo+angulo));
-                        this.context.closePath();
-                        this.context.fill();
-                        inicioAngulo+=angulo;
-                    }
-                }
-
-                /**
-                 * Dibuja un gráfico de pastel con una redonda en medio en modo de donut
-                 * Tiene que recibir:
-                 *	el tamaño de la redonda central (0 no hay redonda - 1 es todo)
-                 *	el color de la redonda
-                 */
-                this.dibujarDonut=function(tamano,color) {
-                    this.tamanoDonut=tamano;
-                    this.dibujar();
-
-                    // creamos un circulo del color recibido en medio
-                    this.context.fillStyle=color;
-                    this.context.beginPath();
-                    this.context.moveTo(this.canvas.width/2, this.canvas.height/2);
-                    this.context.arc(this.canvas.width/2, this.canvas.height/2, this.radio*tamano, 0, 2*Math.PI);
-                    this.context.closePath();
-                    this.context.fill();
-                }
-
-                /**
-                 * Pone el tanto por ciento de cada uno de los valores
-                 * Tiene que recibir:
-                 *	el color del texto
-                 */
-                this.ponerPorCiento=function(color){
-                    var valor=0;
-                    var etiquetaX=0;
-                    var etiquetaY=0;
-                    var inicioAngulo=0;
-                    var angulo=0;
-                    var texto="";
-                    var incrementar=0;
-
-                    // si hemos dibujado un donut, tenemos que incrementar el valor del radio
-                    // para que quede centrado
-                    if(this.tamanoDonut)
-                        incrementar=(this.radio*this.tamanoDonut)/2;
-
-                    this.context.font="bold 12pt Calibri";
-                    this.context.fillStyle=color;
-                    for(var i in this.valores)
-                    {
-                        valor=valores[i]["valor"];
-                        angulo=2*Math.PI*valor/this.total;
-
-                        // calculamos la posición del texto
-                        etiquetaX=this.canvas.width/2+(incrementar+this.radio/2)*Math.cos(inicioAngulo+angulo/2);
-                        etiquetaY=this.canvas.height/2+(incrementar+this.radio/2)*Math.sin(inicioAngulo+angulo/2);
-
-                        texto=Math.round(100*valor/this.total);
-
-                        // movemos la posición unos pixels si estamos en la parte izquierda
-                        // del pastel para que quede mas centrado
-                        if(etiquetaX<this.canvas.width/2)
-                            etiquetaX-=10;
-
-                        // ponemos los valores
-                        this.context.beginPath();
-                        this.context.fillText(texto+"%", etiquetaX, etiquetaY);
-                        this.context.stroke();
-
-                        inicioAngulo+=angulo;
-                    }
-                }
-
-                /**
-                 * Function que devuelve la suma del total de los valores recibidos en el array
-                 */
-                this.getTotal=function() {
-                    var total=0;
-                    for(var i in this.valores)
-                    {
-                        total+=valores[i]["valor"];
-                    }
-                    return total;
-                }
-
-                /**
-                 * Función que devuelve una lista (<ul><li>) con la leyenda
-                 * Tiene que recibir el id donde poner la leyenda
-                 */
-                this.ponerLeyenda=function(leyendaId) {
-                    var codigoHTML="<ul class='leyenda'>";
-
-                    for(var i in this.valores)
-                    {
-                        codigoHTML+="<li><span style='background-color:"+valores[i]["color"]+"'></span>"+i+"</li>";
-                    }
-                    codigoHTML+="</ul>";
-                    document.getElementById(leyendaId).innerHTML=codigoHTML;
-                }
-            }
-
-            // definimos los valores de nuestra gráfica
-            var valores={
-                "SALSAS KETCHUP":{valor:1044,color:"blue"},
-                "AVENA INSTANTANEA":{valor:4000,color:"red"},
-                "GELATINA SIN SABOR":{valor:1590,color:"green"},
-                "PURE DE PAPAS":{valor:3200,color:"Orange"},
-                "SALSAS MAYONESA":{valor:1430,color:"Cyan"}
-            }
-
-
-            // generamos el primer pastel
-            var pastel=new miPastel("canvas1",280,280,valores);
-            pastel.dibujar();
-            pastel.ponerPorCiento("white");
-
-
-
-
-
-        </script></div>
-                                </div>
-                            </div>
-
-                            <!-- Approach -->
-
-
-                        </div>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">DASHBOARD & GRAFICOS - SALSAS KRIS</h1>
                     </div>
-
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <iframe 
+                            id="powerbi-iframe"
+                            title="DASHBOARD & GRAFICOS - SALSAS KRIS" 
+                            width="1650" 
+                            height="695.025" 
+                            src="https://app.powerbi.com/reportEmbed?reportId=0ad93c69-c9d3-4583-afe2-2a5769a2e5ac&autoAuth=true&ctid=77cab36c-76b2-48c3-9c54-cb9e4ee09b72&permissions=allow&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly9XQUJJLUJPIFwxNzIwMl0iLCJlbWJlZEZlYXR1cmVzIjp7ImVtYmVkQm9vayI6ZmFsc2UsImVtYmVkRGF0YVRyYW5zZm9ybWF0aW9uIjpmYWxzZSwibmF0aXZlQ29udGV4dE1lbnUiOmZhbHNlLCJwYWdlTmF2aWdhdGlvbk1vZGUiOmZhbHNlLCJwYWdlU2xvb3RCYXNlZE5hdmlnYXRpb24iOmZhbHNlLCJwYWdlU2xvb3RCYXNlZE5hdmlnYXRpb25DdXJzb3IiOmZhbHNlLCJxdWlja1RyYW5zZm9ybWF0aW9uIjpmYWxzZX0sImVuYWJsZUNoYXRIb3QiOmZhbHNlLCJoaWRlUmVwb3J0RmlsdGVyUGFuZWwiOmZhbHNlLCJoaWRlQXV0b0ZpbHRlcnNQYW5lIjpmYWxzZSwiaGlkZVJlYm9vdFdpZGdldHMiOmZhbHNlLCJkaXNhYmxlSW5zaWdodCI6ZmFsc2UsInN1cHBvcnRFRiI6ZmFsc2UsImVkaXRBY3Rpb25EYXRhQ2FsbGJhY2siOmZhbHNlfX0%3d" 
+                            frameborder="0" 
+                            allowFullScreen="true">
+                        </iframe>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -361,28 +225,21 @@
         </div>
         <!-- End of Content Wrapper -->
 
-                <!-- Footer -->
+    </div>
+    <!-- End of Page Wrapper -->
 
-                <!-- End of Footer -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-            </div>
-            <!-- End of Content Wrapper -->
-
-        </div>
-        <!-- End of Page Wrapper -->
-
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">¿Esta seguro de cerrar sesion?</h5>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">¿Esta seguro de cerrar sesion?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -391,28 +248,28 @@
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                     <a class="btn btn-primary" href="{% url 'home' %}">Cerrar sesion</a>
-                    </div>
                 </div>
             </div>
         </div>
-        <!-- Bootstrap core JavaScript-->
-        <script src=" {% static 'vendor/jquery/jquery.min.js' %}"></script>
-        <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    </div>
 
-        <!-- Core plugin JavaScript-->
-        <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
-        <!-- Custom scripts for all pages-->
-        <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
-        <!-- Page level plugins -->
-        <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
-        <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+    <!-- Page level plugins -->
+    <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
 
+    <!-- Page level custom scripts -->
+    <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+    <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
 
+</body>
 
 </html>
-

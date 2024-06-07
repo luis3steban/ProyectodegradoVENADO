@@ -2,6 +2,15 @@
 {% load static %}
 
 {% block content %}
+<script>
+    $(document).ready(function () {
+      $('.accordion-toggle').click(function () {
+        var target = $(this).attr('data-target');
+        $(target).slideToggle('slow');
+        $(this).find('.fas').toggleClass('fa-chevron-up fa-chevron-down');
+      });
+    });
+  </script>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-10 col-lg-12 col-md-9">
@@ -12,13 +21,52 @@
                                 <div class="text-center">
                                     <img id="producto-img" class="producto-imagen" src="{% static 'img/logotipo principal.png' %}" alt="Imagen del producto">
                                 </div>
-                            </div>3
-                            <div class="col-lg-6 d-flex align-items-center">
+                            </div>
+                            <div class="table table-striped">
                                 <div class="p-5">
                                     <h1 class="h4 text-gray-900 mb-4">Agregar Datos de Producción y Distribución</h1>
                                     <form method="post">
                                         {% csrf_token %}
                                         <div class="form-group">
+                                            <table class="table table-striped">
+                                                <!-- Encabezado de la tabla -->
+                                                <thead>
+                                                  <tr>
+                                                    <th>Producto Kris</th>
+                                                    <th>Fecha mensual</th>
+                                                    <th>Cantidad de producción</th>
+                                                    <th>Canal horizontal</th>
+                                                    <th>Canal tradicional</th>
+                                                    <th>Canal moderno</th>
+                                                  </tr>
+                                                </thead>
+                                                    <tbody>
+                                                        <!-- Filas de la tabla -->
+                                                        {% for usuario in usuarios %}
+                                                        <tr id="usuario-{{ usuario.id }}">
+                                                          <td>{{ usuario.id }}</td>
+                                                          <td><span id="nombre-{{ usuario.id }}">{{ usuario.nombre_usuario }}</span></td>
+                                                          <td><span id="email-{{ usuario.id }}">{{ usuario.correo }}</span></td>
+                                                          <td><span id="acceso-{{ usuario.id }}">{{ usuario.acceso.acceso_predict }}</span></td>
+                                                          <td id="accionesus-{{ usuario.id }}">
+                                                            {% if not usuario.en_edicion %}
+                                                              <!-- Botón para modificar usuario -->
+                                                              <button class="btn btn-warning btn-sm" onclick="editarUsuario({{ usuario.id }})">Modificar</button>
+                                                              <!-- Botón para eliminar usuario -->
+                                                              <button class="btn btn-danger btn-sm" onclick="eliminarUsuario({{ usuario.id }})">
+                                                                Eliminar
+                                                              </button>
+                                                            {% else %}
+                                                              <!-- Botón para guardar cambios -->
+                                                              <button class="btn btn-primary btn-sm" onclick="guardarCambiosUsuario({{ usuario.id }})">
+                                                                Guardar
+                                                              </button>
+                                                            {% endif %}
+                                                          </td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                      </tbody>
+                                            </table >
                                             <label for="{{ form.producto.id_for_label }}">* Producto:</label>
                                             {{ form.producto }}
                                         </div>
@@ -52,6 +100,7 @@
             </div>
         </div>
     </div>
+
     <style>
         .producto-imagen {
             max-width: 100%;

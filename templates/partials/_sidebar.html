@@ -45,11 +45,13 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
+            {% if request.COOKIES.id_acceso|default:"" != "1" %}
             <li class="nav-item">
-                <a class="nav-link {% if nombre_acceso == "Usuario marketing" %}disabled{% endif %}" href="{% url 'addReportes' %}" style="background-color: darkred">
-                    <span>Gestión Producción</span>
+                <a class="nav-link" href="{% url 'addReportes' %}" style="background-color: darkred">
+                    <span>Gestión de producción</span>
                 </a>
             </li>
+            {% endif %}
             <!-- Divider -->
             <hr class="sidebar-divider" style=background-color:white>
             <!-- Heading -->

@@ -118,6 +118,7 @@ class Usuarios(AbstractBaseUser):
 
     class Meta:
         db_table = 'usuarios'
+
 class AuditoriaPredicciones(models.Model):
     id = models.AutoField(primary_key=True)
     usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE)
@@ -132,7 +133,10 @@ class AuditoriaPredicciones(models.Model):
     arSL2 = models.FloatField()
     sigma2 = models.FloatField()
     pdf = models.FileField(upload_to='pdfs/')
+
     class Meta:
         db_table = 'auditoria_predicciones'
+        ordering = ['horaprediccion', 'fechaprediccion']  
+
     def __str__(self):
-        return self.usuario
+        return f"{self.usuario} - {self.fechaprediccion} {self.horaprediccion}"

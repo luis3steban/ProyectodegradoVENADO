@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'ProyectofinalArteaga.middleware.TokenCheckMiddleware',
 ]
 
 ROOT_URLCONF = 'ProyectofinalArteaga.urls'
@@ -76,6 +77,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ProyectofinalArteaga.wsgi.application'
 AUTH_USER_MODEL = 'home.Usuarios'
 
+# Configuración de correo electrónico utilizando Mailgun SMTP
+EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
+ANYMAIL = {
+    "MAILGUN_API_KEY": "5c59f8a2f671eb95404322941e2dc7a8-063062da-ec952464",  # Reemplaza con tu clave de API de Mailgun
+    "MAILGUN_SENDER_DOMAIN": "sandboxe5d3ea22d5604c4087add03580bf7adf.mailgun.org",  # Reemplaza con tu dominio registrado en Mailgun
+}
+
+
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -84,7 +93,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'venadobdpredict',
         'USER': 'root',
-        'PASSWORD': '8399243Leav_',
+        'PASSWORD': '8399243La_',
         'HOST': 'localhost',
         'PORT': '3306',
     }
